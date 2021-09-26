@@ -13,6 +13,11 @@ function App() {
   // }, []);
 
   // const names = data && data.map((d) => <div key={d.id}>{d.name}</div>);
+  const cars = [1, 2, 3, 4, 5, 6, 7].map((car) => (
+    <Grid item>
+      <VehicleCard />
+    </Grid>
+  ));
   return (
     <div className="App">
       <NavBar />
@@ -20,8 +25,16 @@ function App() {
         <Grid item xs={12} sm={2} sx={{ background: "red" }}>
           Left
         </Grid>
-        <Grid item xs={12} sm={8} sx={{ background: "green" }}>
-          <VehicleCard />
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          container
+          spacing={2}
+          justifyContent={"center"}
+          sx={{ paddingTop: "16px" }}
+        >
+          {cars}
         </Grid>
         <Grid item xs={12} sm={2} sx={{ background: "red" }}>
           Right

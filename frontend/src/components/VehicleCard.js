@@ -18,7 +18,7 @@ import { CardActionArea, Grid, Button } from "@mui/material";
 
 export default function RecipeReviewCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} raised>
       <CardActionArea>
         <CardMedia
           component="img"
