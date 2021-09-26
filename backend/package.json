@@ -4,7 +4,8 @@
   "description": "Lighthouse Labs Final Project developed for the car dealership Sundance-Mazda to redesign their website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
