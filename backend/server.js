@@ -6,7 +6,7 @@ const PORT = process.env.EXPRESSPORT || 8000;
 const morgan = require("morgan");
 const db = require("./db");
 
-app.use(morgan("common"));
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.send(`Server is listening on port ${PORT}`);
