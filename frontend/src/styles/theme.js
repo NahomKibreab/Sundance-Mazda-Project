@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material/styles';
-import { grey  } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
@@ -7,7 +6,7 @@ const theme = createTheme({
       main: "#000",
     },
     secondary: {
-      main: grey[500],
+      main: "#bec2cb",
     },
   },
 });
