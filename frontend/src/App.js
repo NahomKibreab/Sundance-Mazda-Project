@@ -1,6 +1,7 @@
 import "./App.css";
 import { Grid } from "@mui/material";
 import NavBar from "./components/NavBar";
+import VehicleCard from "./components/VehicleCard";
 
 function App() {
   // const [data, setData] = useState();
@@ -14,13 +15,13 @@ function App() {
   // const names = data && data.map((d) => <div key={d.id}>{d.name}</div>);
   return (
     <div className="App">
-        <NavBar/>
-        <Grid container>
+      <NavBar />
+      <Grid container>
         <Grid item xs={12} sm={2} sx={{ background: "red" }}>
           Left
         </Grid>
         <Grid item xs={12} sm={8} sx={{ background: "green" }}>
-          Center
+          <VehicleCard />
         </Grid>
         <Grid item xs={12} sm={2} sx={{ background: "red" }}>
           Right
