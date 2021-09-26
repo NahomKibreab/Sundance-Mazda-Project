@@ -1,0 +1,37 @@
+{
+  "name": "sundance-mazda-project",
+  "version": "1.0.0",
+  "description": "Lighthouse Labs Final Project developed for the car dealership Sundance-Mazda to redesign their website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NahomKibreab/Sundance-Mazda-Project.git"
+  },
+  "keywords": [
+    "Sundance",
+    "Mazda",
+    "LHL",
+    "Final",
+    "Project",
+    "Lighhouse",
+    "Labs"
+  ],
+  "author": "Nahom Mehanzel & Amit Baid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NahomKibreab/Sundance-Mazda-Project/issues"
+  },
+  "homepage": "https://github.com/NahomKibreab/Sundance-Mazda-Project#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13"
+  }
+}
