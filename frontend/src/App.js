@@ -65,7 +65,7 @@ function App() {
             sx={{ paddingTop: "16px" }}
           >
             <StripeCheckout
-              stripeKey={process.env.REACT_APP_KEY}
+              stripeKey={process.env.REACT_APP_STRIPE_SKEY}
               token={makePayment}
               name="Vehicle Purchase"
               amount={product.price * 100}
