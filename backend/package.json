@@ -27,9 +27,12 @@
   },
   "homepage": "https://github.com/NahomKibreab/Sundance-Mazda-Project#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "stripe": "^8.176.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
