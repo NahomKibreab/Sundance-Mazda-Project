@@ -11,8 +11,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { Avatar, Grid, Paper, useMediaQuery } from "@mui/material";
+import { Avatar, Button, Grid, Paper, useMediaQuery } from "@mui/material";
 import { PhoneEnabled } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
@@ -112,7 +113,7 @@ export default function NavBar() {
           </Menu>
 
           <Box sx={{ flexGrow: 1 }}>
-            {!hideInMobileMode && (
+            {!hideInMobileMode ? (
               <Grid
                 container
                 justifyContent="center"
@@ -124,6 +125,17 @@ export default function NavBar() {
                   <Typography variant="body1">Sundace Mazda</Typography>
                 </Grid>
               </Grid>
+            ) : (
+              <>
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <Button color="inherit">Home</Button>
+                </Link>
+
+                <Button color="inherit">Login</Button>
+              </>
             )}
           </Box>
           {auth && (
