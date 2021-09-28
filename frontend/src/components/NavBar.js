@@ -11,10 +11,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { Avatar, Grid, Paper, useMediaQuery } from "@mui/material";
+import { PhoneEnabled } from "@mui/icons-material";
 
 export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const hideInMobileMode = useMediaQuery((theme) => theme.breakpoints.up("md"));
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -26,6 +30,22 @@ export default function NavBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const mazdaLogo = () => {
+    return (
+      <IconButton size="small" edge="start" color="inherit" aria-label="menu">
+        <Avatar
+          alt="Mazda Logo"
+          variant="square"
+          src={
+            hideInMobileMode
+              ? "https://img.sm360.ca/images/web/auto-groupe-canada/2359/logo-mazda1546612509845.png"
+              : "/mazdalogo.png"
+          }
+        />
+      </IconButton>
+    );
   };
 
   return (
@@ -44,30 +64,63 @@ export default function NavBar() {
       </FormGroup> */}
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Sundance Mazda
-          </Typography>
+          {hideInMobileMode ? (
+            mazdaLogo()
+          ) : (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{
+                mr: 2,
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+
+          <Box sx={{ flexGrow: 1 }}>
+            {!hideInMobileMode && (
+              <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+                spacing={1}
+              >
+                <Grid item>{mazdaLogo()}</Grid>
+                <Grid item>
+                  <Typography variant="body1">Sundace Mazda</Typography>
+                </Grid>
+              </Grid>
+            )}
+          </Box>
           {auth && (
             <div>
               <IconButton
-                size="large"
+                size="small"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <PhoneEnabled />
               </IconButton>
+              {hideInMobileMode && (
+                <IconButton
+                  size="small"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                  sx={{ ml: 2 }}
+                >
+                  <AccountCircle />
+                </IconButton>
+              )}
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
