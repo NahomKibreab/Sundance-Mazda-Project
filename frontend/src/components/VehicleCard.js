@@ -80,11 +80,9 @@ export default function RecipeReviewCard() {
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton aria-label="buy">
-              <Button variant={"contained"} color={"secondary"}>
-                Buy Now
-              </Button>
-            </IconButton>
+            <Button variant={"contained"} color={"secondary"}>
+              Buy Now
+            </Button>
           </Grid>
         </Grid>
       </CardActions>

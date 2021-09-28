@@ -12,7 +12,7 @@ function App() {
   // const { product, setProduct, makePayment } = useStripe();
 
   const cars = [1, 2, 3, 4, 5, 6, 7].map((car) => (
-    <Grid item>
+    <Grid item key={car}>
       <VehicleCard />
     </Grid>
   ));
