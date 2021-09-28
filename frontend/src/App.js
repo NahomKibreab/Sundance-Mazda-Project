@@ -3,8 +3,12 @@ import { Grid } from "@mui/material";
 import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
+import { useState } from "react";
+import axios from "axios";
 
 function App() {
+  console.log("Public Key", process.env.REACT_APP_KEY);
   // const [data, setData] = useState();
 
   // useEffect(() => {
@@ -14,11 +18,35 @@ function App() {
   // }, []);
 
   // const names = data && data.map((d) => <div key={d.id}>{d.name}</div>);
+
+  const [product, setProduct] = useState({
+    name: "React from FB",
+    price: 10,
+    productBy: "facebook",
+  });
+
+  const makePayment = (token) => {
+    const body = {
+      token,
+      product,
+    };
+
+    return axios
+      .post("http://localhost:8000/payment", { ...body })
+      .then((response) => {
+        console.log("Response", response);
+        const { status } = response;
+        console.log("Status", status);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const cars = [1, 2, 3, 4, 5, 6, 7].map((car) => (
     <Grid item>
       <VehicleCard />
     </Grid>
   ));
+
   return (
     <Router>
       <div className="App">
@@ -36,6 +64,12 @@ function App() {
             justifyContent={"center"}
             sx={{ paddingTop: "16px" }}
           >
+            <StripeCheckout
+              stripeKey={process.env.REACT_APP_KEY}
+              token={makePayment}
+              name="Vehicle Purchase"
+              amount={product.price * 100}
+            />
             <Switch>
               <Route path="/cars/1">
                 <Link to="/">Home</Link>
@@ -57,8 +91,6 @@ function App() {
             Right
           </Grid>
         </Grid>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
       </div>
     </Router>
   );
