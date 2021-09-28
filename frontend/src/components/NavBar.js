@@ -17,19 +17,29 @@ import { PhoneEnabled } from "@mui/icons-material";
 export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [menu, setMenu] = React.useState(null);
 
   const hideInMobileMode = useMediaQuery((theme) => theme.breakpoints.up("md"));
 
-  const handleChange = (event) => {
+  const anchorElOnChange = (event) => {
+    setAuth(event.target.checked);
+  };
+  const menuOnChange = (event) => {
     setAuth(event.target.checked);
   };
 
-  const handleMenu = (event) => {
+  const handleAnchorEl = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleMenu = (event) => {
+    setMenu(event.currentTarget);
+  };
 
-  const handleClose = () => {
+  const anchorElOnClose = () => {
     setAnchorEl(null);
+  };
+  const menuOnClose = () => {
+    setMenu(null);
   };
 
   const mazdaLogo = () => {
@@ -68,10 +78,13 @@ export default function NavBar() {
             mazdaLogo()
           ) : (
             <IconButton
-              size="large"
               edge="start"
               color="inherit"
               aria-label="menu"
+              size="small"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
               sx={{
                 mr: 2,
               }}
@@ -79,6 +92,24 @@ export default function NavBar() {
               <MenuIcon />
             </IconButton>
           )}
+          <Menu
+            id="menu-appbar"
+            anchorEl={menu}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(menu)}
+            onClose={menuOnClose}
+          >
+            <MenuItem onClick={menuOnClose}>Profile</MenuItem>
+            <MenuItem onClick={menuOnClose}>My account</MenuItem>
+          </Menu>
 
           <Box sx={{ flexGrow: 1 }}>
             {!hideInMobileMode && (
@@ -102,7 +133,7 @@ export default function NavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={handleAnchorEl}
                 color="inherit"
               >
                 <PhoneEnabled />
@@ -113,7 +144,7 @@ export default function NavBar() {
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={handleMenu}
+                  onClick={handleAnchorEl}
                   color="inherit"
                   sx={{ ml: 2 }}
                 >
@@ -134,10 +165,10 @@ export default function NavBar() {
                   horizontal: "right",
                 }}
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={anchorElOnClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={anchorElOnClose}>Profile</MenuItem>
+                <MenuItem onClick={anchorElOnClose}>My account</MenuItem>
               </Menu>
             </div>
           )}
