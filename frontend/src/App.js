@@ -4,12 +4,13 @@ import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
-import { useState } from "react";
-import axios from "axios";
+import useStripe from "./hooks/useStripe";
+// import { useState } from "react";
+// import axios from "axios";
 
 function App() {
-  console.log("Public Key", process.env.REACT_APP_KEY);
   // const [data, setData] = useState();
+  const { product, setProduct, makePayment } = useStripe();
 
   // useEffect(() => {
   //   axios.get("/db").then((res) => {
@@ -19,27 +20,27 @@ function App() {
 
   // const names = data && data.map((d) => <div key={d.id}>{d.name}</div>);
 
-  const [product, setProduct] = useState({
-    name: "React from FB",
-    price: 10,
-    productBy: "facebook",
-  });
+  // const [product, setProduct] = useState({
+  //   name: "React from FB",
+  //   price: 10,
+  //   productBy: "facebook",
+  // });
 
-  const makePayment = (token) => {
-    const body = {
-      token,
-      product,
-    };
+  // const makePayment = (token) => {
+  //   const body = {
+  //     token,
+  //     product,
+  //   };
 
-    return axios
-      .post("http://localhost:8000/payment", { ...body })
-      .then((response) => {
-        console.log("Response", response);
-        const { status } = response;
-        console.log("Status", status);
-      })
-      .catch((error) => console.log(error));
-  };
+  //   return axios
+  //     .post("http://localhost:8000/payment", { ...body })
+  //     .then((response) => {
+  //       console.log("Response", response);
+  //       const { status } = response;
+  //       console.log("Status", status);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   const cars = [1, 2, 3, 4, 5, 6, 7].map((car) => (
     <Grid item>
