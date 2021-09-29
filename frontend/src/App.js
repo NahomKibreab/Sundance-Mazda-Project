@@ -1,5 +1,5 @@
 import "./App.css";
-import { Grid } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -23,9 +23,7 @@ function App() {
       <div className="App">
         <NavBar />
         <Grid container>
-          <Grid item xs={12} sm={2} sx={{ background: "red" }}>
-            Left
-          </Grid>
+          <Grid item xs={12} sm={2} />
           <Grid
             item
             xs={12}
@@ -43,7 +41,8 @@ function App() {
             /> */}
             <Switch>
               <Route path="/cars/1">
-                <VehicleCard />
+                <img src="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png" />
+
                 <CarCarousel />
               </Route>
               <Route path="/cars">{cars}</Route>
@@ -52,9 +51,7 @@ function App() {
             </Switch>
           </Grid>
 
-          <Grid item xs={12} sm={2} sx={{ background: "red" }}>
-            Right
-          </Grid>
+          <Grid item xs={12} sm={2} />
         </Grid>
       </div>
     </Router>
