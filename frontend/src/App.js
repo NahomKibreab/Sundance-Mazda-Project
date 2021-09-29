@@ -5,6 +5,7 @@ import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CarCarousel from "./components/CarCarousel";
 import CarDetails from "./components/CarDetails";
+import CarDetailsTab from "./components/CarDetailsTab";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
@@ -43,6 +44,7 @@ function App() {
             <Switch>
               <Route path="/cars/1">
                 <CarDetails />
+                
               </Route>
               <Route path="/cars">{cars}</Route>
 
