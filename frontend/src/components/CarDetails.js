@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import CarCarousel from "./CarCarousel";
 import CarDetailsTab from "./CarDetailsTab";
-import ConfirmationModal from "./ConfirmationModal";
+import ConfirmationModalCash from "./ConfirmationModalCash";
+import ConfirmationModalFinanace from "./ConfirmationModalFinance";
 
 export default function CarDetails() {
   const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -36,9 +37,7 @@ export default function CarDetails() {
     };
   };
 
-  const confirmModal = () => {
-    return <ConfirmationModal />;
-  };
+
   return (
     <>
       <Card sx={{ border: "none", boxShadow: "none" }}>
@@ -61,21 +60,14 @@ export default function CarDetails() {
             <Grid item xs={12} sm={6}>
               <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
                 <Typography variant="overline">Monthly Payment</Typography>
-                <Button variant="contained" color="secondary">
-                  Pay Monthly
-                </Button>
+                <ConfirmationModalFinanace />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
                 <Typography variant="overline">Pay Now</Typography>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={confirmModal}
-                >
-                  Buy Now
-                </Button>
+                
+                <ConfirmationModalCash />
               </Paper>
             </Grid>
           </Grid>
