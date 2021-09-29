@@ -42,18 +42,11 @@ function App() {
             /> */}
             <Switch>
               <Route path="/cars/1">
-                <Link to="/">Home</Link>
                 <VehicleCard />
               </Route>
-              <Route path="/cars">
-                <Link to="/">Home</Link>
-                <Link to="/cars/1">Car 1</Link>
-                {cars}
-              </Route>
+              <Route path="/cars">{cars}</Route>
 
-              <Route path="/">
-                <Link to="/cars">Cars</Link>
-              </Route>
+              <Route path="/"></Route>
             </Switch>
           </Grid>
 
