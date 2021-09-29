@@ -78,24 +78,7 @@ export default function NavBar() {
       </FormGroup> */}
       <AppBar position="fixed">
         <Toolbar>
-          {hideInMobileMode ? (
-            mazdaLogo()
-          ) : (
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              size="small"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              // onClick={handleMenu}
-              sx={{
-                mr: 2,
-              }}
-            >
-              <MenuDrawer />
-            </IconButton>
-          )}
+          {hideInMobileMode ? mazdaLogo() : <MenuDrawer />}
           <Menu
             id="menu-appbar"
             anchorEl={menu}

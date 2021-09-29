@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
 // import axios from "axios";
-import MenuDrawer from "./components/MenuDrawer";
 
 function App() {
   // const { product, setProduct, makePayment } = useStripe();
