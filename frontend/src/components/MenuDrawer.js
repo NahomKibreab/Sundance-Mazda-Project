@@ -37,12 +37,13 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Invetory", "About Us"].map((text) => (
+        {["Home", "Invetory", "About Us"].map((text, index) => (
           <Link
             to={MenuDrawerLinks(text)}
             style={{ textDecoration: "none", color: "inherit" }}
+            key={index}
           >
-            <ListItem button key={text}>
+            <ListItem button key={IDBIndex}>
               <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -51,11 +52,17 @@ export default function MenuDrawer() {
       </List>
       <Divider />
       <List>
-        {["My Garage", "My Profile", "Logout"].map((text) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {["My Garage", "My Profile", "Logout"].map((text, index) => (
+          <Link
+            to={MenuDrawerLinks(text)}
+            style={{ textDecoration: "none", color: "inherit" }}
+            key={index}
+          >
+            <ListItem button key={index}>
+              <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
