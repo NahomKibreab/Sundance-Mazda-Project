@@ -1,0 +1,17 @@
+.car-carousel{
+  padding-top: 30px;
+  width: 70%;
+}
+
+.carousel .slider-wrapper{
+  width: 100%;
+}
+
+.carousel .thumb{
+  width:50%;
+  height: 50px;
+}
+
+.carousel{
+  text-align:center;
+}
