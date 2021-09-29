@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import CarCarousel from "./CarCarousel";
 import CarDetailsTab from "./CarDetailsTab";
+import ConfirmationModal from "./ConfirmationModal";
 
 export default function CarDetails() {
   const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
@@ -33,6 +34,10 @@ export default function CarDetails() {
       display: "flex",
       flexDirection: "column",
     };
+  };
+
+  const confirmModal = () => {
+    return <ConfirmationModal />;
   };
   return (
     <>
@@ -64,7 +69,11 @@ export default function CarDetails() {
             <Grid item xs={12} sm={6}>
               <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
                 <Typography variant="overline">Pay Now</Typography>
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={confirmModal}
+                >
                   Buy Now
                 </Button>
               </Paper>
