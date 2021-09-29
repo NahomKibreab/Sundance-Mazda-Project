@@ -10,7 +10,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
-import MenuDrawerIcon from "../Utils/MenuDrawerIcon";
+import MenuDrawerIcon, { MenuDrawerLinks } from "../Utils/MenuDrawerIcon";
+import { Link } from "react-router-dom";
 
 export default function MenuDrawer() {
   const [state, setState] = React.useState({
@@ -37,10 +38,15 @@ export default function MenuDrawer() {
     >
       <List>
         {["Home", "Invetory", "About Us"].map((text) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+          <Link
+            to={MenuDrawerLinks(text)}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button key={text}>
+              <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
