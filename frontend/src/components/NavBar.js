@@ -14,6 +14,7 @@ import Menu from "@mui/material/Menu";
 import { Avatar, Button, Grid, Paper, useMediaQuery } from "@mui/material";
 import { PhoneEnabled } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import MenuDrawer from "./MenuDrawer";
 
 export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
@@ -46,15 +47,17 @@ export default function NavBar() {
   const mazdaLogo = () => {
     return (
       <IconButton size="small" edge="start" color="inherit" aria-label="menu">
-        <Avatar
-          alt="Mazda Logo"
-          variant="square"
-          src={
-            hideInMobileMode
-              ? "https://img.sm360.ca/images/web/auto-groupe-canada/2359/logo-mazda1546612509845.png"
-              : "/mazdalogo.png"
-          }
-        />
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Avatar
+            alt="Mazda Logo"
+            variant="square"
+            src={
+              hideInMobileMode
+                ? "https://img.sm360.ca/images/web/auto-groupe-canada/2359/logo-mazda1546612509845.png"
+                : "/mazdalogo.png"
+            }
+          />
+        </Link>
       </IconButton>
     );
   };
@@ -85,12 +88,12 @@ export default function NavBar() {
               size="small"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleMenu}
+              // onClick={handleMenu}
               sx={{
                 mr: 2,
               }}
             >
-              <MenuIcon />
+              <MenuDrawer />
             </IconButton>
           )}
           <Menu
@@ -134,7 +137,12 @@ export default function NavBar() {
                   <Button color="inherit">Home</Button>
                 </Link>
 
-                <Button color="inherit">Login</Button>
+                <Link
+                  to="/cars"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <Button color="inherit">Inventory</Button>
+                </Link>
               </>
             )}
           </Box>
