@@ -26,3 +26,22 @@ export default function MenuDrawerIcon(menu) {
       break;
   }
 }
+
+export function MenuDrawerLinks(menu) {
+  switch (menu) {
+    case "Home":
+      return "/";
+    case "Invetory":
+      return "/cars";
+    case "About Us":
+      return "/";
+    case "My Garage":
+      return "/";
+    case "My Profile":
+      return "/";
+    case "Logout":
+      return "/";
+    default:
+      break;
+  }
+}
