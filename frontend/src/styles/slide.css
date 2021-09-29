@@ -8,10 +8,20 @@
 }
 
 .carousel .thumb{
+  
   width:50%;
   height: 50px;
 }
 
 .carousel{
   text-align:center;
+}
+
+@media screen and (max-width: 600px) {
+   .car-carousel{
+    width: 100%;
+  } 
+  .carousel .thumb{
+    display: none;
+  }
 }
