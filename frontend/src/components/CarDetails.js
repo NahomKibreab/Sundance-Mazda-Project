@@ -24,7 +24,7 @@ export default function CarDetails() {
   };
   return (
     <>
-      <Card>
+      <Card sx={{ border: "none", boxShadow: "none" }}>
         <CardHeader title="Model, Make, Year" subheader="September 14, 2016" />
         <CardMedia
           component="img"
