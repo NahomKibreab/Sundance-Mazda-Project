@@ -15,11 +15,16 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardActionArea, Grid, Button } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
-export default function RecipeReviewCard() {
+export default function VehicleCard() {
+  const path = useHistory();
+  const carDetails = () => {
+    path.push("/cars/1");
+  };
   return (
     <Card sx={{ maxWidth: 345 }} raised>
-      <CardActionArea>
+      <CardActionArea onClick={carDetails}>
         <CardMedia
           component="img"
           height="194"
