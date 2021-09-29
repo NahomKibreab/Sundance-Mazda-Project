@@ -1,8 +1,12 @@
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
   CardMedia,
+  Grid,
+  Paper,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
 import CarCarousel from "./CarCarousel";
@@ -22,10 +26,18 @@ export default function CarDetails() {
       alignItems: "center",
     };
   };
+  const paymentBoxStyles = () => {
+    return {
+      height: "200px",
+      padding: "1em",
+      display: "flex",
+      flexDirection: "column",
+    };
+  };
   return (
     <>
       <Card sx={{ border: "none", boxShadow: "none" }}>
-        <CardHeader title="Model, Make, Year" subheader="September 14, 2016" />
+        <CardHeader title="Model, Make, Year" subheader="$24,357.68" />
         <CardMedia
           component="img"
           width="50%"
@@ -36,6 +48,29 @@ export default function CarDetails() {
           <CarCarousel />
         </CardContent>
         <CarDetailsTab />
+        <CardContent>
+          <Typography variant="h4" mb={2}>
+            Payment Options
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Paper varinat="contained" sx={paymentBoxStyles} elevation={10}>
+                <Typography variant="overline">Monthly Payment</Typography>
+                <Button variant="contained" color="secondary">
+                  Pay Monthly
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Paper varinat="contained" sx={paymentBoxStyles} elevation={10}>
+                <Typography variant="overline">Pay Now</Typography>
+                <Button variant="contained" color="secondary">
+                  Buy Now
+                </Button>
+              </Paper>
+            </Grid>
+          </Grid>
+        </CardContent>
       </Card>
     </>
   );
