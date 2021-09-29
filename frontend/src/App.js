@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CarCarousel from "./components/CarCarousel";
+import CarDetails from "./components/CarDetails";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
@@ -41,9 +42,7 @@ function App() {
             /> */}
             <Switch>
               <Route path="/cars/1">
-                <img src="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png" />
-
-                <CarCarousel />
+                <CarDetails />
               </Route>
               <Route path="/cars">{cars}</Route>
 
