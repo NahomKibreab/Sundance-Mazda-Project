@@ -7,6 +7,7 @@ import CarCarousel from "./components/CarCarousel";
 import CarDetails from "./components/CarDetails";
 import CarDetailsTab from "./components/CarDetailsTab";
 import Footer from "./components/Footer";
+import HomeCarousel from "./components/HomeCarousel";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
@@ -30,15 +31,14 @@ function App() {
           </Grid>
           <Grid item sx={{ minHeight: "88vh" }}>
             <Grid container>
-              <Grid item xs={12} sm={2} />
               <Grid
                 item
                 xs={12}
-                sm={8}
+                sm={12}
                 container
                 spacing={2}
                 justifyContent={"center"}
-                sx={{ paddingTop: "16px" }}
+                // sx={{ paddingTop: "16px" }}
               >
                 {/* <StripeCheckout
               stripeKey={process.env.REACT_APP_STRIPE_SKEY}
@@ -52,11 +52,11 @@ function App() {
                   </Route>
                   <Route path="/cars">{cars}</Route>
 
-                  <Route path="/"></Route>
+                  <Route path="/">
+                    <HomeCarousel />
+                  </Route>
                 </Switch>
               </Grid>
-
-              <Grid item xs={12} sm={2} />
             </Grid>
           </Grid>
           <Grid item>

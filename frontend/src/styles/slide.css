@@ -1,27 +1,30 @@
-.car-carousel{
+.car-carousel {
   padding-top: 30px;
   width: 70%;
 }
 
-.carousel .slider-wrapper{
+.carousel .slider-wrapper {
   width: 100%;
 }
 
-.carousel .thumb{
-  
-  width:50%;
+.carousel .thumb {
+  width: 50%;
   height: 50px;
 }
 
-.carousel{
-  text-align:center;
+.carousel {
+  text-align: center;
+}
+
+.home-carousel {
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-   .car-carousel{
+  .car-carousel {
     width: 100%;
-  } 
-  .carousel .thumb{
+  }
+  .carousel .thumb {
     display: none;
   }
 }
