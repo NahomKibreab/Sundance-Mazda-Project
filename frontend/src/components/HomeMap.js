@@ -1,9 +1,17 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import "../styles/map.css";
+import { Icon } from "@iconify/react";
+import locationIcon from "@iconify/icons-mdi/map-marker";
+const LocationPin = ({ text }) => (
+  <div className="pin">
+    <Icon icon={locationIcon} className="pin-icon" />
+    <p className="pin-text">{text}</p>
+  </div>
+);
 
 const Map = ({ location, zoomLevel }) => (
-  <div className="map">
+  <div className="map" style={{ width: "100%" }}>
     <h2 className="map-h2">Come Visit Us!</h2>
 
     <div className="google-map">
@@ -12,11 +20,11 @@ const Map = ({ location, zoomLevel }) => (
         defaultCenter={location}
         defaultZoom={zoomLevel}
       >
-        {/* <LocationPin
+        <LocationPin
           lat={location.lat}
           lng={location.lng}
           text={location.address}
-        /> */}
+        />
       </GoogleMapReact>
     </div>
   </div>
