@@ -34,7 +34,6 @@ function App() {
               <Grid
                 item
                 xs={12}
-                sm={12}
                 container
                 spacing={2}
                 justifyContent={"center"}
@@ -50,7 +49,18 @@ function App() {
                   <Route path="/cars/1">
                     <CarDetails />
                   </Route>
-                  <Route path="/cars">{cars}</Route>
+                  <Route path="/cars">
+                    <Grid
+                      container
+                      item
+                      justifyContent="center"
+                      spacing={2}
+                      md={10}
+                      sx={{ marginTop: "16px" }}
+                    >
+                      {cars}
+                    </Grid>
+                  </Route>
 
                   <Route path="/">
                     <HomeCarousel />
