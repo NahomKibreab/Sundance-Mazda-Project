@@ -17,7 +17,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardActionArea, Grid, Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
-export default function VehicleCard() {
+export default function VehicleCard(props) {
+  const { model, year, price } = props;
   const path = useHistory();
   const carDetails = () => {
     path.push("/cars/1");
@@ -35,7 +36,7 @@ export default function VehicleCard() {
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="h6" color="text.secondary">
-                Year, Make, Model
+                {model} {year}
               </Typography>
             </Grid>
             <Grid item>
@@ -44,7 +45,7 @@ export default function VehicleCard() {
                 color="text.secondary"
                 sx={{ fontWeight: "bold" }}
               >
-                $19,590
+                {`$${new Intl.NumberFormat().format(price / 100)}`}
               </Typography>
             </Grid>
           </Grid>

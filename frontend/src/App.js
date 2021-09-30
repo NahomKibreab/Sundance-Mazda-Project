@@ -13,16 +13,30 @@ import HomePage from "./components/HomePage";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [cars, setCars] = useState();
   // const { product, setProduct, makePayment } = useStripe();
 
-  const cars = [1, 2, 3, 4, 5, 6, 7].map((car) => (
-    <Grid item key={car}>
-      <VehicleCard />
-    </Grid>
-  ));
+  const vehicles =
+    cars &&
+    cars.map((car) => (
+      <Grid item key={car}>
+        <VehicleCard {...car} />
+      </Grid>
+    ));
+  useEffect(() => {
+    const vehicles = async () => {
+      const response = await axios.get("/api/cars");
+
+      setCars(response.data);
+      console.log("cars", cars);
+      return cars;
+    };
+    vehicles();
+  }, []);
 
   const location = {
     address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
@@ -70,7 +84,7 @@ function App() {
                       md={10}
                       sx={{ marginTop: "16px" }}
                     >
-                      {cars}
+                      {cars && vehicles}
                     </Grid>
                   </Route>
 
