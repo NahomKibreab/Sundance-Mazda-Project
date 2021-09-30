@@ -13,6 +13,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
+// api
+const vehicles = require("./routes/vehicles");
+app.use("/api", vehicles(db));
+
 app.get("/", (req, res) => {
   res.send(`Server is listening on port ${PORT}`);
 });
