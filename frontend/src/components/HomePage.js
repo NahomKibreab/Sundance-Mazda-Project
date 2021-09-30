@@ -5,11 +5,13 @@ import {
   CardMedia,
   Grid,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import HomeCarousel from "./HomeCarousel";
 import Map from "./HomeMap";
 
 export default function HomePage() {
+  const largMode = useMediaQuery((theme) => theme.breakpoints.up("sm"));
   const location = {
     address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
     lat: 53.544013658365934,
@@ -17,7 +19,11 @@ export default function HomePage() {
   };
   return (
     <>
-      <HomeCarousel />
+      <Grid container mt={largMode ? 2 : 0}>
+        <Grid item>
+          <HomeCarousel />
+        </Grid>
+      </Grid>
 
       <Grid container justifyContent="center" spacing={2} mt={2}>
         <Grid item xs={12}>
