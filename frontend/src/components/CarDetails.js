@@ -18,9 +18,7 @@ export default function CarDetails() {
   const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const styles = () => {
     if (matches) {
-      return {
-        paddingRight: 0,
-      };
+      return {};
     }
     return {
       display: "flex",
@@ -36,7 +34,6 @@ export default function CarDetails() {
       flexDirection: "column",
     };
   };
-
 
   return (
     <>
@@ -66,7 +63,7 @@ export default function CarDetails() {
             <Grid item xs={12} sm={6}>
               <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
                 <Typography variant="overline">Pay Now</Typography>
-                
+
                 <ConfirmationModalCash />
               </Paper>
             </Grid>

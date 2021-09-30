@@ -55,7 +55,11 @@ function App() {
             /> */}
                 <Switch>
                   <Route path="/cars/1">
-                    <CarDetails />
+                    <Grid container item justifyContent="center">
+                      <Grid item md={8}>
+                        <CarDetails />
+                      </Grid>
+                    </Grid>
                   </Route>
                   <Route path="/cars">
                     <Grid
