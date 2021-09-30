@@ -8,6 +8,8 @@ import CarDetails from "./components/CarDetails";
 import CarDetailsTab from "./components/CarDetailsTab";
 import Footer from "./components/Footer";
 import HomeCarousel from "./components/HomeCarousel";
+import Map from "./components/HomeMap";
+import HomePage from "./components/HomePage";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
 // import { useState } from "react";
@@ -21,6 +23,12 @@ function App() {
       <VehicleCard />
     </Grid>
   ));
+
+  const location = {
+    address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
+    lat: 53.544013658365934,
+    lng: -113.63180428465739,
+  };
 
   return (
     <Router>
@@ -63,7 +71,7 @@ function App() {
                   </Route>
 
                   <Route path="/">
-                    <HomeCarousel />
+                    <HomePage />
                   </Route>
                 </Switch>
               </Grid>
