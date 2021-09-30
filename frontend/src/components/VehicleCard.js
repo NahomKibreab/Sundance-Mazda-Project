@@ -18,7 +18,7 @@ import { CardActionArea, Grid, Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 export default function VehicleCard(props) {
-  const { model, year, price } = props;
+  const { model, year, price, trim, mileage } = props;
   const path = useHistory();
   const carDetails = () => {
     path.push("/cars/1");
@@ -52,24 +52,24 @@ export default function VehicleCard(props) {
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="body1" color="text.secondary">
-                Trim
+                {trim}
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="body1" color="text.secondary">
-                Est. Payment
+                Est. Payment for 5 years
               </Typography>
             </Grid>
           </Grid>
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="body1" color="text.secondary">
-                Mileage
+                {`Mileage: ${mileage}km`}
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="body1" color="text.secondary">
-                $300/mo
+                {`${new Intl.NumberFormat().format(price / (12 * 5) / 100)}/mo`}
               </Typography>
             </Grid>
           </Grid>
