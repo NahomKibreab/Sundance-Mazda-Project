@@ -43,6 +43,14 @@ export default function CarDetails() {
     };
   };
 
+  const imageList =
+    car &&
+    car.image_links.filter((image, index) => {
+      if (index > 0) {
+        return image;
+      }
+    });
+
   if (car) {
     return (
       <>
@@ -58,7 +66,7 @@ export default function CarDetails() {
             alt={car.model}
           />
           <CardContent sx={styles()}>
-            <CarCarousel />
+            <CarCarousel imageList={imageList} />
           </CardContent>
 
           <CarDetailsTab specs={car.specs} features={car.features} />
