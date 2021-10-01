@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Tab, Tabs } from "@mui/material";
+import { Grid, Tab, Tabs } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import InsetList from "./InsetList";
@@ -61,14 +61,22 @@ export default function CarDetailsTab(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        {specs.map((item) => (
-          <InsetList spec={item} key={item} />
-        ))}
+        <Grid container spacing={1}>
+          {specs.map((item) => (
+            <Grid item xs={12} sm={6}>
+              <InsetList spec={item} key={item} />
+            </Grid>
+          ))}
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {features.map((item) => (
-          <InsetList spec={item} key={item} />
-        ))}
+        <Grid container alignItems="center">
+          {features.map((item) => (
+            <Grid item xs={6} sm={4} md={3}>
+              <InsetList spec={item} key={item} />
+            </Grid>
+          ))}
+        </Grid>
       </TabPanel>
     </Box>
   );
