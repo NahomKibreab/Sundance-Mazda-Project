@@ -17,13 +17,6 @@ function App() {
   const [cars, setCars] = useState();
   // const { product, setProduct, makePayment } = useStripe();
 
-  const vehicles =
-    cars &&
-    cars.map((car) => (
-      <Grid item key={car}>
-        <VehicleCard {...car} />
-      </Grid>
-    ));
   useEffect(() => {
     const vehicles = async () => {
       const response = await axios.get("/api/cars");
@@ -32,6 +25,21 @@ function App() {
     };
     vehicles();
   }, []);
+
+  const removeCar = (id) => {
+    const newCars = [...cars];
+    newCars.splice(id, 1);
+    console.log("id", id, "newCars", newCars);
+    setCars(newCars);
+  };
+
+  const vehicles =
+    cars &&
+    cars.map((car, index) => (
+      <Grid item key={index}>
+        <VehicleCard {...car} removeCar={removeCar} index={index} />
+      </Grid>
+    ));
 
   const location = {
     address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",

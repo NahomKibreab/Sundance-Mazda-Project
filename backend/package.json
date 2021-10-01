@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "reset" : "psql -U mazda -d mazda < ./db/schema/create.sql && psql -U mazda -d mazda < ./db/seeds/vehicles.sql"
   },
   "repository": {
     "type": "git",

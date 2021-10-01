@@ -18,7 +18,8 @@ import { CardActionArea, Grid, Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 export default function VehicleCard(props) {
-  const { model, year, price, trim, mileage, image_links } = props;
+  const { id, model, year, price, trim, mileage, image_links, removeCar } =
+    props;
   const path = useHistory();
   const carDetails = () => {
     path.push("/cars/1");
@@ -88,7 +89,11 @@ export default function VehicleCard(props) {
             </IconButton>
           </Grid>
           <Grid item>
-            <Button variant={"contained"} color={"secondary"}>
+            <Button
+              variant={"contained"}
+              color={"secondary"}
+              onClick={() => removeCar(id)}
+            >
               Buy Now
             </Button>
           </Grid>
