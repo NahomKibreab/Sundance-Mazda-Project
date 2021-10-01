@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { textAlign } from "@mui/system";
+import InsetList from "./InsetList";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,12 +63,14 @@ export default function CarDetailsTab(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Front Wheel Drive, 2L 4cyl.(155hp/150lbs ft. torque), Automatic 6 speed
+        {specs.map((item) => (
+          <InsetList spec={item} />
+        ))}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        GX Model - Electronic brake force distribution ABS Brakes Stability
-        control Traction control Hill assist Power door locks Blind spot warning
-        Rear cross traffic warning Alloy Wheels Rear camera
+        {features.map((item) => (
+          <InsetList spec={item} />
+        ))}
       </TabPanel>
     </Box>
   );
