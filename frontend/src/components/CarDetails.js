@@ -3,6 +3,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Divider,
   Grid,
   Paper,
   Typography,
@@ -14,6 +15,8 @@ import ConfirmationModalCash from "./ConfirmationModalCash";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
 import { useParams } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
+import { Box } from "@mui/system";
+import BasicTable from "./BasicTable";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
@@ -35,7 +38,7 @@ export default function CarDetails() {
   };
   const paymentBoxStyles = () => {
     return {
-      height: "200px",
+      minHeight: "200px",
       padding: "1em",
       display: "flex",
       flexDirection: "column",
@@ -67,7 +70,7 @@ export default function CarDetails() {
 
           <CardContent>
             <Typography variant="h4" mb={2}>
-              Payment Options
+              Price Details
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -76,7 +79,7 @@ export default function CarDetails() {
                   sx={paymentBoxStyles()}
                   elevation={10}
                 >
-                  <Typography variant="overline">Monthly Payment</Typography>
+                  <Typography variant="overline">Pay Monthly</Typography>
                   <ConfirmationModalFinanace />
                 </Paper>
               </Grid>
@@ -86,7 +89,25 @@ export default function CarDetails() {
                   sx={paymentBoxStyles()}
                   elevation={10}
                 >
-                  <Typography variant="overline">Pay Now</Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="h5" sx={{ fontWeight: "light" }}>
+                      Pay Once
+                    </Typography>
+                  </Box>
+                  <Divider variant="middle" />
+
+                  <Box sx={{ m: 2 }}>
+                    <Typography
+                      variant="h5"
+                      sx={{ fontWeight: "bold" }}
+                    >{`$${new Intl.NumberFormat().format(
+                      car.price / 100
+                    )}`}</Typography>
+                  </Box>
+                  <Divider variant="middle" />
+                  <Box sx={{ m: 2 }}>
+                    <BasicTable />
+                  </Box>
 
                   <ConfirmationModalCash />
                 </Paper>
