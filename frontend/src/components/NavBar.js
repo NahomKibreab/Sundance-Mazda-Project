@@ -46,12 +46,12 @@ export default function NavBar() {
 
   const mazdaLogo = () => {
     return (
-      <IconButton size="small" edge="start" color="inherit" aria-label="menu">
+      <IconButton size="large" edge="start" color="inherit" aria-label="menu">
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Avatar
             alt="Mazda Logo"
             variant="square"
-            src="/images/Sundance-Logo.png"
+            src="/images/Sundance-Logo-2.png"
           />
         </Link>
       </IconButton>
@@ -103,9 +103,6 @@ export default function NavBar() {
                 spacing={1}
               >
                 <Grid item>{mazdaLogo()}</Grid>
-                <Grid item>
-                  <Typography variant="body1">Sundace Mazda</Typography>
-                </Grid>
               </Grid>
             ) : (
               <>
