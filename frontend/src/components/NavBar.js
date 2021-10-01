@@ -51,11 +51,7 @@ export default function NavBar() {
           <Avatar
             alt="Mazda Logo"
             variant="square"
-            src={
-              hideInMobileMode
-                ? "https://img.sm360.ca/images/web/auto-groupe-canada/2359/logo-mazda1546612509845.png"
-                : "/mazdalogo.png"
-            }
+            src="/images/Sundance-Logo.png"
           />
         </Link>
       </IconButton>
