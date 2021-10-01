@@ -17,25 +17,26 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardActionArea, Grid, Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
-export default function VehicleCard() {
+export default function VehicleCard(props) {
+  const { model, year, price, trim, mileage, image_links } = props;
   const path = useHistory();
   const carDetails = () => {
     path.push("/cars/1");
   };
   return (
-    <Card sx={{ maxWidth: 345 }} raised>
+    <Card sx={{ maxWidth: 400 }} raised>
       <CardActionArea onClick={carDetails}>
         <CardMedia
           component="img"
           height="194"
-          image="https://images.unsplash.com/photo-1567360300863-47f71100205b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1932&q=80"
-          alt="Paella dish"
+          image={image_links[0]}
+          alt={model}
         />
         <CardContent>
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="h6" color="text.secondary">
-                Year, Make, Model
+                {model} {year}
               </Typography>
             </Grid>
             <Grid item>
@@ -44,31 +45,33 @@ export default function VehicleCard() {
                 color="text.secondary"
                 sx={{ fontWeight: "bold" }}
               >
-                $19,590
+                {`$${new Intl.NumberFormat().format(price / 100)}`}
               </Typography>
             </Grid>
           </Grid>
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="body1" color="text.secondary">
-                Trim
+                {trim}
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="body1" color="text.secondary">
-                Est. Payment
+                Est. Payment for 5 years
               </Typography>
             </Grid>
           </Grid>
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="body1" color="text.secondary">
-                Mileage
+                {`Mileage: ${mileage}km`}
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="body1" color="text.secondary">
-                $300/mo
+                {`$${new Intl.NumberFormat().format(
+                  price / (12 * 5) / 100
+                )}/mo`}
               </Typography>
             </Grid>
           </Grid>
