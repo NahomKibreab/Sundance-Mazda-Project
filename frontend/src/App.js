@@ -1,14 +1,11 @@
 import "./App.css";
-import { Button, Grid, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CarCarousel from "./components/CarCarousel";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CarDetails from "./components/CarDetails";
 import CarDetailsTab from "./components/CarDetailsTab";
 import Footer from "./components/Footer";
-import HomeCarousel from "./components/HomeCarousel";
-import Map from "./components/HomeMap";
 import HomePage from "./components/HomePage";
 // import StripeCheckout from "react-stripe-checkout";
 // import useStripe from "./hooks/useStripe";
@@ -32,8 +29,6 @@ function App() {
       const response = await axios.get("/api/cars");
 
       setCars(response.data);
-      console.log("cars", cars);
-      return cars;
     };
     vehicles();
   }, []);
@@ -68,7 +63,7 @@ function App() {
               amount={product.price * 100}
             /> */}
                 <Switch>
-                  <Route path="/cars/1">
+                  <Route path="/cars/:carId">
                     <Grid container item justifyContent="center">
                       <Grid item md={8}>
                         <CarDetails />
