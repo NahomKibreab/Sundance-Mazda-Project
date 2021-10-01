@@ -5,7 +5,7 @@ export default function CarCarousel(props) {
   console.log("imageList:", props.imageList);
   const images = props.imageList.map((image) => {
     return (
-      <div>
+      <div key={image}>
         <img src={image} alt="Mazda Pictures" />
       </div>
     );

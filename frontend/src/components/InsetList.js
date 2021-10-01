@@ -13,7 +13,7 @@ export default function InsetList(props) {
       sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       aria-label="contacts"
     >
-      <ListItem disablePadding>
+      <ListItem disablePadding key={spec}>
         <ListItemButton>
           <ListItemIcon>
             <StarIcon />

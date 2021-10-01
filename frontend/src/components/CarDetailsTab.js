@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import { Tab, Tabs } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import InsetList from "./InsetList";
@@ -63,12 +62,12 @@ export default function CarDetailsTab(props) {
       </Box>
       <TabPanel value={value} index={0}>
         {specs.map((item) => (
-          <InsetList spec={item} />
+          <InsetList spec={item} key={item} />
         ))}
       </TabPanel>
       <TabPanel value={value} index={1}>
         {features.map((item) => (
-          <InsetList spec={item} />
+          <InsetList spec={item} key={item} />
         ))}
       </TabPanel>
     </Box>
