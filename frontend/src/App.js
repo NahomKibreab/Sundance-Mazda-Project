@@ -28,8 +28,9 @@ function App() {
 
   const removeCar = (id) => {
     const newCars = [...cars];
-    newCars.splice(id, 1);
-    console.log("id", id, "newCars", newCars);
+    console.log("id", id, "before newCars", newCars);
+    newCars.splice(0, 1);
+    console.log("id", id, "after newCars", newCars);
     setCars(newCars);
   };
 
@@ -40,12 +41,6 @@ function App() {
         <VehicleCard {...car} removeCar={removeCar} index={index} />
       </Grid>
     ));
-
-  const location = {
-    address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
-    lat: 53.544013658365934,
-    lng: -113.63180428465739,
-  };
 
   return (
     <Router>
