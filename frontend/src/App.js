@@ -4,7 +4,6 @@ import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CarDetails from "./components/CarDetails";
-import CarDetailsTab from "./components/CarDetailsTab";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 // import StripeCheckout from "react-stripe-checkout";

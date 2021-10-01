@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -44,12 +43,7 @@ export default function CarDetails() {
   };
 
   const imageList =
-    car &&
-    car.image_links.filter((image, index) => {
-      if (index > 0) {
-        return image;
-      }
-    });
+    car && car.image_links.filter((image, index) => (index > 0 ? image : null));
 
   if (car) {
     return (

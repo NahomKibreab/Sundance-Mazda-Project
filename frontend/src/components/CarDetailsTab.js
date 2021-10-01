@@ -4,7 +4,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { textAlign } from "@mui/system";
 import InsetList from "./InsetList";
 
 function TabPanel(props) {
