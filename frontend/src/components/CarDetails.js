@@ -13,8 +13,16 @@ import CarCarousel from "./CarCarousel";
 import CarDetailsTab from "./CarDetailsTab";
 import ConfirmationModalCash from "./ConfirmationModalCash";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
+import { useParams } from "react-router-dom";
+import useVehiclesData from "../hooks/useVehiclesData";
 
 export default function CarDetails() {
+  const { getCarById } = useVehiclesData();
+  let params = useParams();
+  const car = getCarById(params.carId);
+
+  console.log("car", car);
+
   const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const styles = () => {
     if (matches) {
@@ -35,41 +43,58 @@ export default function CarDetails() {
     };
   };
 
-  return (
-    <>
-      <Card sx={{ border: "none", boxShadow: "none" }}>
-        <CardHeader title="Model, Make, Year" subheader="$24,357.68" />
-        <CardMedia
-          component="img"
-          width="50%"
-          image="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png"
-          alt="Mazda Car Image"
-        />
-        <CardContent sx={styles()}>
-          <CarCarousel />
-        </CardContent>
-        <CarDetailsTab />
-        <CardContent>
-          <Typography variant="h4" mb={2}>
-            Payment Options
-          </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
-                <Typography variant="overline">Monthly Payment</Typography>
-                <ConfirmationModalFinanace />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper varinat="contained" sx={paymentBoxStyles()} elevation={10}>
-                <Typography variant="overline">Pay Now</Typography>
+  if (car) {
+    return (
+      <>
+        <Card sx={{ border: "none", boxShadow: "none" }}>
+          <CardHeader
+            title={`${car.year} ${car.model} ${car.trim}`}
+            subheader={`$${new Intl.NumberFormat().format(car.price / 100)}`}
+          />
+          <CardMedia
+            component="img"
+            width="50%"
+            image={car.image_links[0]}
+            alt={car.model}
+          />
+          <CardContent sx={styles()}>
+            <CarCarousel />
+          </CardContent>
 
-                <ConfirmationModalCash />
-              </Paper>
+          <CarDetailsTab specs={car.specs} features={car.features} />
+
+          <CardContent>
+            <Typography variant="h4" mb={2}>
+              Payment Options
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <Paper
+                  varinat="contained"
+                  sx={paymentBoxStyles()}
+                  elevation={10}
+                >
+                  <Typography variant="overline">Monthly Payment</Typography>
+                  <ConfirmationModalFinanace />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Paper
+                  varinat="contained"
+                  sx={paymentBoxStyles()}
+                  elevation={10}
+                >
+                  <Typography variant="overline">Pay Now</Typography>
+
+                  <ConfirmationModalCash />
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-    </>
-  );
+          </CardContent>
+        </Card>
+      </>
+    );
+  }
+
+  return null;
 }
