@@ -46,7 +46,7 @@ app.post("/payment", (req, res) => {
     .then((customer) => {
       stripe.charges.create(
         {
-          amount: product.price * 100,
+          amount: product.price,
           currency: "usd",
           customer: customer.id,
         },

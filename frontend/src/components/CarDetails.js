@@ -54,7 +54,7 @@ export default function CarDetails() {
     if (car) {
       setProduct({
         name: `${car.year} ${car.model} ${car.trim}`,
-        price: car.price / 100,
+        price: car.price,
         productBy: car.make,
       });
     }
