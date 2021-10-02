@@ -44,11 +44,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Grid container direction="column" justifyContent="space-between">
+        <Grid
+          container
+          direction="column"
+          justifyContent="space-between"
+          sx={{ minHeight: "100vh" }}
+        >
           <Grid item>
             <NavBar />
           </Grid>
-          <Grid item sx={{ minHeight: "88vh" }}>
+          <Grid item sx={{ flexGrow: 1 }}>
             <Grid container>
               <Grid
                 item
@@ -56,6 +61,7 @@ function App() {
                 container
                 spacing={2}
                 justifyContent={"center"}
+                alignItems="space-evenly"
                 // sx={{ paddingTop: "16px" }}
               >
                 {/* <StripeCheckout
@@ -92,7 +98,7 @@ function App() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item sx={{ width: "100%" }} alignSelf="center">
             <Footer />
           </Grid>
         </Grid>

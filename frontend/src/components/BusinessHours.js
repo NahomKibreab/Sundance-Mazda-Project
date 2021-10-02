@@ -46,7 +46,7 @@ export default function BusinessHours() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{}}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -54,14 +54,14 @@ export default function BusinessHours() {
           aria-label="Business Hours"
           centered
           textColor="#000"
-          borderColor="#000"
+          indicatorColor="secondary"
         >
           <Tab label="Sales" {...a11yProps(0)} />
           <Tab label="Service" {...a11yProps(1)} />
           <Tab label="Parts" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0} alignContent="center">
+      <TabPanel value={value} index={0} className="business-hours">
         <table>
           <tr>
             <td>Monday</td>
@@ -93,7 +93,7 @@ export default function BusinessHours() {
           </tr>
         </table>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={value} index={1} className="business-hours">
         <table>
           <tr>
             <td>Monday</td>
@@ -125,7 +125,7 @@ export default function BusinessHours() {
           </tr>
         </table>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={2} className="business-hours">
         <table>
           <tr>
             <td>Monday</td>
