@@ -37,6 +37,13 @@
   padding: 16px;
 }
 
+.footer-link-list {
+  text-align: left;
+}
+.footer-link-list li {
+  padding-bottom: 16px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

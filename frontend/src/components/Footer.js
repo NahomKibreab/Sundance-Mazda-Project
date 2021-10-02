@@ -3,13 +3,14 @@ import BusinessHours from "./BusinessHours";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="primary" sx={{ marginTop: "24px" }}>
         <Grid container justifyContent="center" spacing={2}>
-          <Grid item xs={12} sm={6} justifyContent="center" alignItems="center">
+          <Grid item xs={12} md={4} justifyContent="center" alignItems="center">
             <Typography variant="h6" color="inherit" p={2}>
               Contact Us
             </Typography>
@@ -65,11 +66,62 @@ export default function Footer() {
               </a>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={4}>
             <Typography variant="h6" color="inherit" p={2}>
               Business Hours
               <BusinessHours />
             </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" color="inherit" p={2}>
+              Helpful Links
+            </Typography>
+            <Grid container item justifyContent="center">
+              <Grid item alignItems="flex-start">
+                <ul className="footer-link-list">
+                  <li>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/cars"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Inventory
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Customer Reviews
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      News
+                    </Link>
+                  </li>
+                </ul>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </AppBar>
