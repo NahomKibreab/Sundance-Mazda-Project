@@ -50,7 +50,7 @@ export default function CarDetails() {
   // Stripe Payment Custome hooks
   const { product, setProduct, makePayment, status, email } = useStripe();
 
-  const totalPrice = car.price + car.price * 0.05 + 29900;
+  const totalPrice = car && car.price + car.price * 0.05 + 29900;
 
   useEffect(() => {
     if (car) {
