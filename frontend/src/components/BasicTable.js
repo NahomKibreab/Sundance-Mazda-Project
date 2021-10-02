@@ -13,11 +13,14 @@ export default function BasicTable(props) {
   const rows = [
     createData(
       "Vehicle Price",
-      `$${new Intl.NumberFormat().format(props.price / 100)}`
+      `$${new Intl.NumberFormat().format((props.price / 100).toFixed(2))}`
     ),
-    createData("Tax, Title, Registration", 0),
-    createData("Shipping", 0),
-    createData("Bogus Fees", 0),
+    createData(
+      "Tax, Title, Registration",
+      `$${new Intl.NumberFormat().format((props.tax / 100).toFixed(2))}`
+    ),
+    createData("Shipping", "$299"),
+    createData("Dealer Fees", "NEVER!"),
   ];
 
   return (

@@ -50,11 +50,13 @@ export default function CarDetails() {
   // Stripe Payment Custome hooks
   const { product, setProduct, makePayment, status, email } = useStripe();
 
+  const totalPrice = car.price + car.price * 0.05 + 29900;
+
   useEffect(() => {
     if (car) {
       setProduct({
         name: `${car.year} ${car.model} ${car.trim}`,
-        price: car.price,
+        price: totalPrice,
         productBy: car.make,
       });
     }
@@ -124,7 +126,45 @@ export default function CarDetails() {
                   sx={paymentBoxStyles()}
                   elevation={10}
                 >
-                  <Typography variant="overline">Pay Monthly</Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="h5" sx={{ fontWeight: "light" }}>
+                      Pay Monthly
+                    </Typography>
+                  </Box>
+                  <Divider variant="middle" />
+
+                  <Box sx={{ m: 2 }}>
+                    <Typography
+                      variant="h5"
+                      sx={{ fontWeight: "bold" }}
+                    >{`$${new Intl.NumberFormat().format(
+                      car.price / 100
+                    )}`}</Typography>
+                  </Box>
+                  <Divider variant="middle" />
+                  <Box sx={{ m: 2 }}>
+                    <BasicTable price={car.price} />
+                  </Box>
+                  <Divider variant="middle" />
+
+                  <StripeCheckout
+                    stripeKey={process.env.REACT_APP_STRIPE_SKEY}
+                    token={makePayment}
+                    name={`${car.year} ${car.model} ${car.trim}`}
+                    amount={product.price}
+                  >
+                    <Button variant="contained" color="secondary">
+                      Pay with Card
+                    </Button>
+                  </StripeCheckout>
+                  <SnackbarNotification
+                    open={open}
+                    handleClose={handleClose}
+                    message={
+                      email &&
+                      `Payment confirmed! Bill of sale has been sent to ${email}`
+                    }
+                  />
                   <ConfirmationModalFinanace />
                 </Paper>
               </Grid>
@@ -146,12 +186,21 @@ export default function CarDetails() {
                       variant="h5"
                       sx={{ fontWeight: "bold" }}
                     >{`$${new Intl.NumberFormat().format(
-                      car.price / 100
+                      (totalPrice / 100).toFixed(2)
                     )}`}</Typography>
                   </Box>
                   <Divider variant="middle" />
                   <Box sx={{ m: 2 }}>
-                    <BasicTable price={car.price} />
+                    <BasicTable price={car.price} tax={car.price * 0.05} />
+                  </Box>
+                  <Divider variant="middle" />
+                  <Box sx={{ m: 2 }}>
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      Total:{" $"}
+                      {new Intl.NumberFormat().format(
+                        (totalPrice / 100).toFixed(2)
+                      )}
+                    </Typography>
                   </Box>
 
                   <StripeCheckout
@@ -172,7 +221,6 @@ export default function CarDetails() {
                       `Payment confirmed! Bill of sale has been sent to ${email}`
                     }
                   />
-                  <ConfirmationModalCash />
                 </Paper>
               </Grid>
             </Grid>
