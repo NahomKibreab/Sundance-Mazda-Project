@@ -23,6 +23,7 @@ import useStripe from "../hooks/useStripe";
 import { useState, useEffect } from "react";
 import SnackbarNotification from "./SnackbarNotification";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
@@ -50,7 +51,9 @@ export default function CarDetails() {
   // Stripe Payment Custome hooks
   const { product, setProduct, makePayment, status, email } = useStripe();
 
-  const totalPrice = car && car.price + car.price * 0.05 + 29900;
+  const totalPrice =
+    car && Number.parseInt(car.price + car.price * 0.05 + 29900);
+  console.log("totalPrice", totalPrice);
 
   useEffect(() => {
     if (car) {
@@ -66,6 +69,9 @@ export default function CarDetails() {
   useEffect(() => {
     if (status) {
       handleClick();
+      axios.put(`/api/cars/${car.id}`).then((res) => {
+        console.log("response from sold car route", res);
+      });
       setTimeout(() => {
         path.push("/cars");
       }, 3000);
