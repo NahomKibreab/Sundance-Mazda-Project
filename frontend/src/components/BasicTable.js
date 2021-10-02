@@ -4,21 +4,25 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 
 function createData(name, calories) {
   return { name, calories };
 }
 
-const rows = [
-  createData("Frozen yoghurt", 159),
-  createData("Ice cream sandwich", 237),
-];
+export default function BasicTable(props) {
+  const rows = [
+    createData(
+      "Vehicle Price",
+      `$${new Intl.NumberFormat().format(props.price / 100)}`
+    ),
+    createData("Tax, Title, Registration", 0),
+    createData("Shipping", 0),
+    createData("Bogus Fees", 0),
+  ];
 
-export default function BasicTable() {
   return (
     <TableContainer>
-      <Table aria-label="simple table">
+      <Table aria-label="simple table" size="small">
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
