@@ -28,9 +28,13 @@
   color: #61dafb;
 }
 
-.business-hours{
+.business-hours {
   display: flex;
   justify-content: center;
+}
+
+.social-icons {
+  padding: 16px;
 }
 
 @keyframes App-logo-spin {

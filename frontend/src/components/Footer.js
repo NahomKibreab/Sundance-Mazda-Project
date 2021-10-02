@@ -1,5 +1,8 @@
 import { AppBar, Typography, Box, Grid } from "@mui/material";
 import BusinessHours from "./BusinessHours";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 export default function Footer() {
   return (
@@ -30,7 +33,37 @@ export default function Footer() {
               Service: 1-844-472-8053
               <br />
               Parts: 1-780-454-7278
+              <br />
             </Typography>
+            <Grid
+              item
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <a
+                href="https://www.facebook.com/SundanceMazda"
+                style={{ textDecoration: "none", color: "inherit" }}
+                target="to_blank"
+              >
+                <FacebookIcon fontSize="large" className="social-icons" />
+              </a>
+              <a
+                href="https://twitter.com/SundanceMazda"
+                style={{ textDecoration: "none", color: "inherit" }}
+                target="to_blank"
+              >
+                <TwitterIcon fontSize="large" className="social-icons" />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCa9nctw4WU9kAcvWRm5sXSw"
+                style={{ textDecoration: "none", color: "inherit" }}
+                target="to_blank"
+              >
+                <YouTubeIcon fontSize="large" className="social-icons" />
+              </a>
+            </Grid>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" color="inherit" p={2}>
