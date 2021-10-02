@@ -2,7 +2,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import "../styles/slide.css";
 export default function CarCarousel(props) {
-  console.log("imageList:", props.imageList);
   const images = props.imageList.map((image) => {
     return (
       <div key={image}>

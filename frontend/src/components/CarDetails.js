@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import CarCarousel from "./CarCarousel";
 import CarDetailsTab from "./CarDetailsTab";
-import ConfirmationModalCash from "./ConfirmationModalCash";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
 import { useParams } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
@@ -46,14 +45,11 @@ export default function CarDetails() {
     setOpen(false);
   };
 
-  console.log("car", car);
-
   // Stripe Payment Custome hooks
   const { product, setProduct, makePayment, status, email } = useStripe();
 
   const totalPrice =
     car && Number.parseInt(car.price + car.price * 0.05 + 29900);
-  console.log("totalPrice", totalPrice);
 
   useEffect(() => {
     if (car) {

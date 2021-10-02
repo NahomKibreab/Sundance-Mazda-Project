@@ -53,7 +53,7 @@ export default function BusinessHours() {
           onChange={handleChange}
           aria-label="Business Hours"
           centered
-          textColor="#000"
+          textColor="inherit"
           indicatorColor="secondary"
         >
           <Tab label="Sales" {...a11yProps(0)} />
@@ -63,98 +63,104 @@ export default function BusinessHours() {
       </Box>
       <TabPanel value={value} index={0} className="business-hours">
         <table>
-          <tr>
-            <td>Monday</td>
-            <td>9:00AM - 8:30PM</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td>9:00AM - 8:30PM</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>9:00AM - 8:30PM</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>9:00AM - 8:30PM</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>9:00AM - 6:00PM</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>9:00AM - 6:00PM</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>12:00PM - 5:00PM</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>9:00AM - 8:30PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>9:00AM - 8:30PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>9:00AM - 8:30PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>9:00AM - 8:30PM</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>9:00AM - 6:00PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>9:00AM - 6:00PM</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>12:00PM - 5:00PM</td>
+            </tr>
+          </tbody>
         </table>
       </TabPanel>
       <TabPanel value={value} index={1} className="business-hours">
         <table>
-          <tr>
-            <td>Monday</td>
-            <td>7:00AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td>7:00AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>7:00AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>7:00AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>7:00AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>8:00AM - 4:00PM</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>Closed</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>7:00AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>7:00AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>7:00AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>7:00AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>7:00AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>8:00AM - 4:00PM</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>Closed</td>
+            </tr>
+          </tbody>
         </table>
       </TabPanel>
       <TabPanel value={value} index={2} className="business-hours">
         <table>
-          <tr>
-            <td>Monday</td>
-            <td>7:30AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td>7:30AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>7:30AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>7:30AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>7:30AM - 5:00PM</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>8:00AM - 4:00PM</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>Closed</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>7:30AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>7:30AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>7:30AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>7:30AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>7:30AM - 5:00PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>8:00AM - 4:00PM</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>Closed</td>
+            </tr>
+          </tbody>
         </table>
       </TabPanel>
     </Box>

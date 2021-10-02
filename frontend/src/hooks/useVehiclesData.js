@@ -19,5 +19,5 @@ export default function useVehiclesData() {
     return cars[`${id}`];
   };
 
-  return { cars, getCarById };
+  return { cars, getCarById, setCars };
 }
