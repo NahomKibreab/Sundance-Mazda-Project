@@ -1,8 +1,8 @@
 // Function for calculating monthly payments
 
 function calculateMonthly(amount, rate, term) {
-  intrate = rate / 100 / 12;
-  months = term * 12;
+  const intrate = rate / 100 / 12;
+  const months = term * 12;
 
   if (intrate === 0) {
     return amount / months;

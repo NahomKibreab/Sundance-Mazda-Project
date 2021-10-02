@@ -20,6 +20,8 @@ export default function BasicTable(props) {
       `$${new Intl.NumberFormat().format((props.tax / 100).toFixed(2))}`
     ),
     createData("Shipping", "$299"),
+    createData("Interest Rate", "2.99%"),
+    createData("Term ", props.term + " years"),
     createData("Dealer Fees", "NEVER!"),
   ];
 

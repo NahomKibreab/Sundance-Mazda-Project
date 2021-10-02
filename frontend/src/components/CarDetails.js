@@ -5,8 +5,12 @@ import {
   CardHeader,
   CardMedia,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -22,11 +26,18 @@ import useStripe from "../hooks/useStripe";
 import { useState, useEffect } from "react";
 import SnackbarNotification from "./SnackbarNotification";
 import axios from "axios";
+import calculateMonthly from "../Utils/CalculateMonthly";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
   let params = useParams();
   const car = getCarById(params.carId);
+
+  const [years, setYears] = useState(7);
+
+  const handleChange = (event) => {
+    setYears(event.target.value);
+  };
 
   // Success Notification
   const [open, setOpen] = useState(false);
@@ -134,16 +145,33 @@ export default function CarDetails() {
                   <Divider variant="middle" />
 
                   <Box sx={{ m: 2 }}>
-                    <Typography
-                      variant="h5"
-                      sx={{ fontWeight: "bold" }}
-                    >{`$${new Intl.NumberFormat().format(
-                      car.price / 100
-                    )}`}</Typography>
+                    <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                      {`$${new Intl.NumberFormat().format(
+                        calculateMonthly(car.price / 100, 2.99, years)
+                      )}`}
+                    </Typography>
+                    <Box sx={{ minWidth: 120 }}>
+                      <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">
+                          Years
+                        </InputLabel>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={years}
+                          label="Years"
+                          onChange={handleChange}
+                        >
+                          <MenuItem value={5}>Five</MenuItem>
+                          <MenuItem value={6}>Six</MenuItem>
+                          <MenuItem value={7}>Seven</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
                   </Box>
                   <Divider variant="middle" />
                   <Box sx={{ m: 2 }}>
-                    <BasicTable price={car.price} />
+                    <BasicTable price={car.price} term={years} />
                   </Box>
                   <Divider variant="middle" />
 
