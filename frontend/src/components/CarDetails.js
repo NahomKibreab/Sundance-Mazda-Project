@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -17,13 +18,57 @@ import { useParams } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
 import { Box } from "@mui/system";
 import BasicTable from "./BasicTable";
+import StripeCheckout from "react-stripe-checkout";
+import useStripe from "../hooks/useStripe";
+import { useState, useEffect } from "react";
+import SnackbarNotification from "./SnackbarNotification";
+import { useHistory } from "react-router-dom";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
   let params = useParams();
   const car = getCarById(params.carId);
+  const path = useHistory();
+
+  // Success Notification
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   console.log("car", car);
+
+  // Stripe Payment Custome hooks
+  const { product, setProduct, makePayment, status, email } = useStripe();
+
+  useEffect(() => {
+    if (car) {
+      setProduct({
+        name: `${car.year} ${car.model} ${car.trim}`,
+        price: car.price / 100,
+        productBy: car.make,
+      });
+    }
+  }, [car]);
+
+  // Display success notification if Stripe payment completed
+  useEffect(() => {
+    if (status) {
+      handleClick();
+      setTimeout(() => {
+        path.push("/cars");
+      }, 3000);
+    }
+  }, [status, email]);
 
   const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const styles = () => {
@@ -106,9 +151,27 @@ export default function CarDetails() {
                   </Box>
                   <Divider variant="middle" />
                   <Box sx={{ m: 2 }}>
-                    <BasicTable />
+                    <BasicTable price={car.price} />
                   </Box>
 
+                  <StripeCheckout
+                    stripeKey={process.env.REACT_APP_STRIPE_SKEY}
+                    token={makePayment}
+                    name={`${car.year} ${car.model} ${car.trim}`}
+                    amount={product.price}
+                  >
+                    <Button variant="contained" color="secondary">
+                      Pay with Card
+                    </Button>
+                  </StripeCheckout>
+                  <SnackbarNotification
+                    open={open}
+                    handleClose={handleClose}
+                    message={
+                      email &&
+                      `Payment confirmed! Bill of sale has been sent to ${email}`
+                    }
+                  />
                   <ConfirmationModalCash />
                 </Paper>
               </Grid>

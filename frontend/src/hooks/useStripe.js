@@ -7,11 +7,16 @@ export default function useStripe() {
     productBy: "facebook",
   });
 
+  const [status, setStatus] = useState(null);
+  const [email, setEmail] = useState(null);
+
   const makePayment = (token) => {
     const body = {
       token,
       product,
     };
+
+    setEmail(token.email);
 
     return axios
       .post("http://localhost:8000/payment", { ...body })
@@ -19,9 +24,16 @@ export default function useStripe() {
         console.log("Response", response);
         const { status } = response;
         console.log("Status", status);
+        confirmed(status);
       })
       .catch((error) => console.log(error));
   };
 
-  return { product, makePayment, setProduct };
+  const confirmed = (status) => {
+    if (status === 200) {
+      setStatus(status);
+    }
+  };
+
+  return { product, makePayment, setProduct, status, email };
 }
