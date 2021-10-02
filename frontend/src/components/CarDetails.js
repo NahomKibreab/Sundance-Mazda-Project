@@ -21,14 +21,12 @@ import StripeCheckout from "react-stripe-checkout";
 import useStripe from "../hooks/useStripe";
 import { useState, useEffect } from "react";
 import SnackbarNotification from "./SnackbarNotification";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
   let params = useParams();
   const car = getCarById(params.carId);
-  const path = useHistory();
 
   // Success Notification
   const [open, setOpen] = useState(false);
@@ -69,7 +67,7 @@ export default function CarDetails() {
         console.log("response from sold car route", res);
       });
       setTimeout(() => {
-        path.push("/cars");
+        window.location = "/cars";
       }, 3000);
     }
   }, [status, email]);
