@@ -33,7 +33,9 @@ export default function HomePage() {
               <CardHeader
                 title={`${carModel.year} ${carModel.model} ${carModel.trim}`}
                 titleTypographyProps={carModel.trim}
-                subheader={`$${new Intl.NumberFormat().format(carModel.price)}`}
+                subheader={`$${new Intl.NumberFormat().format(
+                  carModel.price / 100
+                )}`}
               />
               <CardMedia
                 component="img"
