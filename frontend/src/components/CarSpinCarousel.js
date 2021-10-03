@@ -2,10 +2,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import "../styles/slide.css";
 
-export default function CarSpinCarousel() {
+export default function CarSpinCarousel(props) {
   return (
     <Carousel
-      className="home-carousel"
+      className="car-spin-carousel"
       showThumbs={false}
       autoPlay={true}
       infiniteLoop={true}
@@ -14,28 +14,13 @@ export default function CarSpinCarousel() {
       stopOnHover={false}
     >
       <div>
-        <img
-          src={
-            "https://github.com/NahomKibreab/Sundance-Mazda-Project/blob/master/frontend/public/images/vehicles/CX-9/CX-9-1.png?raw=true"
-          }
-          alt="Mazda Banner"
-        />
+        <img src={props.image1} alt="Mazda Banner" />
       </div>
       <div>
-        <img
-          src={
-            "https://github.com/NahomKibreab/Sundance-Mazda-Project/blob/master/frontend/public/images/vehicles/CX-9/CX-9-8.png?raw=true"
-          }
-          alt="Mazda Banner"
-        />
+        <img src={props.image2} alt="Mazda Banner" />
       </div>
       <div>
-        <img
-          src={
-            "https://github.com/NahomKibreab/Sundance-Mazda-Project/blob/master/frontend/public/images/vehicles/CX-9/CX-9-9.png?raw=true"
-          }
-          alt="Mazda Banner"
-        />
+        <img src={props.image3} alt="Mazda Banner" />
       </div>
     </Carousel>
   );

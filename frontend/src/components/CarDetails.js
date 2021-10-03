@@ -131,7 +131,11 @@ export default function CarDetails() {
             image={car.image_links[0]}
             alt={car.model}
           /> */}
-          <CarSpinCarousel />
+          <CarSpinCarousel
+            image1={car.carousel_links[0]}
+            image2={car.carousel_links[1]}
+            image3={car.carousel_links[2]}
+          />
           <CardContent sx={styles()}>
             <CarCarousel imageList={imageList} />
           </CardContent>
