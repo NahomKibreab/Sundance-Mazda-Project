@@ -48,8 +48,6 @@ export default function HomePage() {
         </Grid>
       );
     });
-
-  const largMode = useMediaQuery((theme) => theme.breakpoints.up("sm"));
   const location = {
     address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
     lat: 53.544013658365934,
@@ -57,7 +55,7 @@ export default function HomePage() {
   };
   return (
     <>
-      <Grid container mt={largMode ? 2 : 0}>
+      <Grid container mt={2}>
         <Grid item>
           <HomeCarousel />
         </Grid>
