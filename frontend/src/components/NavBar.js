@@ -160,8 +160,9 @@ export default function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={anchorElOnClose}
               >
-                <MenuItem onClick={anchorElOnClose}>Profile</MenuItem>
-                <MenuItem onClick={anchorElOnClose}>My account</MenuItem>
+                <MenuItem onClick={anchorElOnClose}>My Profile</MenuItem>
+                <MenuItem onClick={anchorElOnClose}>My Garage</MenuItem>
+                <MenuItem onClick={anchorElOnClose}>Log Out</MenuItem>
               </Menu>
             </div>
           )}
