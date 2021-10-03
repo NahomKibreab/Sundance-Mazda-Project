@@ -27,6 +27,7 @@ import { useState, useEffect } from "react";
 import SnackbarNotification from "./SnackbarNotification";
 import axios from "axios";
 import calculateMonthly from "../Utils/CalculateMonthly";
+import CarSpinCarousel from "./CarSpinCarousel";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
@@ -124,12 +125,13 @@ export default function CarDetails() {
             title={`${car.year} ${car.model} ${car.trim}`}
             subheader={`$${new Intl.NumberFormat().format(car.price / 100)}`}
           />
-          <CardMedia
+          {/* <CardMedia
             component="img"
             width="50%"
             image={car.image_links[0]}
             alt={car.model}
-          />
+          /> */}
+          <CarSpinCarousel />
           <CardContent sx={styles()}>
             <CarCarousel imageList={imageList} />
           </CardContent>

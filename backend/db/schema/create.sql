@@ -17,7 +17,9 @@ CREATE TABLE vehicles (
   int_color VARCHAR(255) ,
   specs TEXT [],
   features TEXT [],
-  image_links TEXT []
+  image_links TEXT [],
+  carousel_links TEXT []
+
 );
 
 CREATE TABLE users (
