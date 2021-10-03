@@ -16,14 +16,16 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
+export default function ConfirmationModalFinanace(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained" color="secondary">Pay Monthly</Button>
+      <Button onClick={handleOpen} variant="contained" color="secondary">
+        Payment Details
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -32,10 +34,18 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Total amount financed:
+            {`$${new Intl.NumberFormat().format(props.amount)}`}
+            <br />
+            Term in years: {props.term}
+            <br />
+            Monthly payment :{" "}
+            {`$${new Intl.NumberFormat().format(props.monthly)}`}
+            <br />
+            Interest rate: 2.99%
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            Estimated amounts above.
           </Typography>
         </Box>
       </Modal>

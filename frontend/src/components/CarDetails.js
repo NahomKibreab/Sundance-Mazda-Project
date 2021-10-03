@@ -19,7 +19,7 @@ import CarDetailsTab from "./CarDetailsTab";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
 import { useParams } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
-import { Box } from "@mui/system";
+import { Box, padding } from "@mui/system";
 import BasicTable from "./BasicTable";
 import StripeCheckout from "react-stripe-checkout";
 import useStripe from "../hooks/useStripe";
@@ -33,10 +33,20 @@ export default function CarDetails() {
   let params = useParams();
   const car = getCarById(params.carId);
 
+  // Setting Term for monthly payments
+
   const [years, setYears] = useState(7);
 
   const handleChange = (event) => {
     setYears(event.target.value);
+  };
+
+  // Setting Down payment
+
+  const [downPayment, setDownPayment] = useState(2000);
+
+  const handleChangeDown = (event) => {
+    setDownPayment(event.target.value);
   };
 
   // Success Notification
@@ -143,35 +153,61 @@ export default function CarDetails() {
                     </Typography>
                   </Box>
                   <Divider variant="middle" />
-
                   <Box sx={{ m: 2 }}>
                     <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                       {`$${new Intl.NumberFormat().format(
-                        calculateMonthly(car.price / 100, 2.99, years)
+                        calculateMonthly(
+                          totalPrice / 100 - downPayment,
+                          2.99,
+                          years
+                        )
                       )}`}
                     </Typography>
-                    <Box sx={{ minWidth: 120 }}>
-                      <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">
-                          Years
-                        </InputLabel>
+                  </Box>
+                  <Divider variant="middle" />
+                  <Box sx={{ m: 2, display: "flex", justifyContent: "center" }}>
+                    <Box sx={{ minWidth: 120, padding: 2 }}>
+                      <FormControl fullWidth={false}>
+                        <InputLabel id="term-select">Years</InputLabel>
                         <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
+                          labelId="term-select"
+                          id="term-select"
                           value={years}
                           label="Years"
                           onChange={handleChange}
                         >
+                          <MenuItem value={2}>Two</MenuItem>
+                          <MenuItem value={3}>Three</MenuItem>
+                          <MenuItem value={4}>Four</MenuItem>
                           <MenuItem value={5}>Five</MenuItem>
                           <MenuItem value={6}>Six</MenuItem>
                           <MenuItem value={7}>Seven</MenuItem>
                         </Select>
                       </FormControl>
                     </Box>
+                    <Box sx={{ minWidth: 120, padding: 2 }}>
+                      <FormControl fullWidth={false}>
+                        <InputLabel id="down-payment-select">
+                          Cash Down
+                        </InputLabel>
+                        <Select
+                          labelId="down-payment-select"
+                          id="down-payment-select"
+                          value={downPayment}
+                          label="Down Payment"
+                          onChange={handleChangeDown}
+                        >
+                          <MenuItem value={2000}>$2,000</MenuItem>
+                          <MenuItem value={3000}>$3,000</MenuItem>
+                          <MenuItem value={4000}>$4,000</MenuItem>
+                          <MenuItem value={5000}>$5,000</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
                   </Box>
                   <Divider variant="middle" />
                   <Box sx={{ m: 2 }}>
-                    <BasicTable price={car.price} term={years} />
+                    <BasicTable price={car.price} />
                   </Box>
                   <Divider variant="middle" />
 
@@ -182,7 +218,7 @@ export default function CarDetails() {
                     amount={product.price}
                   >
                     <Button variant="contained" color="secondary">
-                      Pay with Card
+                      Pay Deposit
                     </Button>
                   </StripeCheckout>
                   <SnackbarNotification
@@ -193,7 +229,15 @@ export default function CarDetails() {
                       `Payment confirmed! Bill of sale has been sent to ${email}`
                     }
                   />
-                  <ConfirmationModalFinanace />
+                  <ConfirmationModalFinanace
+                    term={years}
+                    amount={totalPrice / 100 - downPayment}
+                    monthly={calculateMonthly(
+                      totalPrice / 100 - downPayment,
+                      2.99,
+                      years
+                    )}
+                  />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -238,7 +282,7 @@ export default function CarDetails() {
                     amount={product.price}
                   >
                     <Button variant="contained" color="secondary">
-                      Pay with Card
+                      Pay Total
                     </Button>
                   </StripeCheckout>
                   <SnackbarNotification
