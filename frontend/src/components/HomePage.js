@@ -7,10 +7,46 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import HomeCarousel from "./HomeCarousel";
 import Map from "./HomeMap";
 
 export default function HomePage() {
+  const [carModels, setCarModels] = useState();
+  const path = useHistory();
+
+  useEffect(() => {
+    axios.get("/api/cars/models").then(({ data }) => {
+      setCarModels(data);
+    });
+  }, []);
+
+  const models =
+    carModels &&
+    carModels.map((carModel) => {
+      return (
+        <Grid item xs={7} lg={3}>
+          <Card raised>
+            <CardActionArea onClick={() => path.push(`/cars/${carModel.id}`)}>
+              <CardHeader
+                title={`${carModel.year} ${carModel.model} ${carModel.trim}`}
+                titleTypographyProps={carModel.trim}
+                subheader={`$${new Intl.NumberFormat().format(carModel.price)}`}
+              />
+              <CardMedia
+                component="img"
+                width="30%"
+                image={carModel.image_links[0]}
+                alt={carModel.model}
+              />
+            </CardActionArea>
+          </Card>
+        </Grid>
+      );
+    });
+
   const largMode = useMediaQuery((theme) => theme.breakpoints.up("sm"));
   const location = {
     address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
@@ -29,45 +65,7 @@ export default function HomePage() {
         <Grid item xs={12}>
           <Typography variant="h5">Special Offers</Typography>
         </Grid>
-        <Grid item md={3}>
-          <Card raised>
-            <CardActionArea>
-              <CardHeader title="Model, Make, Year" subheader="$24,357.68" />
-              <CardMedia
-                component="img"
-                width="30%"
-                image="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png"
-                alt="Mazda Car Image"
-              />
-            </CardActionArea>
-          </Card>
-        </Grid>
-        <Grid item md={3}>
-          <Card raised>
-            <CardActionArea>
-              <CardHeader title="Model, Make, Year" subheader="$24,357.68" />
-              <CardMedia
-                component="img"
-                width="30%"
-                image="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png"
-                alt="Mazda Car Image"
-              />
-            </CardActionArea>
-          </Card>
-        </Grid>
-        <Grid item md={3}>
-          <Card raised>
-            <CardActionArea>
-              <CardHeader title="Model, Make, Year" subheader="$24,357.68" />
-              <CardMedia
-                component="img"
-                width="30%"
-                image="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/mazda/3-sport/gx/5-doors-hatchback/exteriorColors/13520_cc0640_001_41w.png"
-                alt="Mazda Car Image"
-              />
-            </CardActionArea>
-          </Card>
-        </Grid>
+        {models}
       </Grid>
       <Map location={location} zoomLevel={17} />
     </>
