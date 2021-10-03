@@ -2,6 +2,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import "../styles/slide.css";
 
+//Spining Car Carousel for Car Details Page
+
 export default function CarSpinCarousel(props) {
   return (
     <Carousel

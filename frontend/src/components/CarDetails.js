@@ -125,12 +125,6 @@ export default function CarDetails() {
             title={`${car.year} ${car.model} ${car.trim}`}
             subheader={`$${new Intl.NumberFormat().format(car.price / 100)}`}
           />
-          {/* <CardMedia
-            component="img"
-            width="50%"
-            image={car.image_links[0]}
-            alt={car.model}
-          /> */}
           <CarSpinCarousel
             image1={car.carousel_links[0]}
             image2={car.carousel_links[1]}
