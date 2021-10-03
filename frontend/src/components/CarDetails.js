@@ -207,7 +207,7 @@ export default function CarDetails() {
                   </Box>
                   <Divider variant="middle" />
                   <Box sx={{ m: 2 }}>
-                    <BasicTable price={car.price} />
+                    <BasicTable price={car.price} tax={car.price * 0.05} />
                   </Box>
                   <Divider variant="middle" />
 
@@ -231,6 +231,7 @@ export default function CarDetails() {
                   />
                   <ConfirmationModalFinanace
                     term={years}
+                    downPayment={downPayment}
                     amount={totalPrice / 100 - downPayment}
                     monthly={calculateMonthly(
                       totalPrice / 100 - downPayment,

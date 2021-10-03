@@ -37,6 +37,9 @@ export default function ConfirmationModalFinanace(props) {
             Total amount financed:
             {`$${new Intl.NumberFormat().format(props.amount)}`}
             <br />
+            Total down payment:{" "}
+            {`$${new Intl.NumberFormat().format(props.downPayment)}`}
+            <br />
             Term in years: {props.term}
             <br />
             Monthly payment :{" "}
