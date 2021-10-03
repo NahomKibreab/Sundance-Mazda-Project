@@ -215,7 +215,7 @@ export default function CarDetails() {
                     stripeKey={process.env.REACT_APP_STRIPE_SKEY}
                     token={makePayment}
                     name={`${car.year} ${car.model} ${car.trim}`}
-                    amount={product.price}
+                    amount={downPayment * 100}
                   >
                     <Button variant="contained" color="secondary">
                       Pay Deposit
