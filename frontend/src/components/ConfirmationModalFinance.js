@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { IconButton } from "@mui/material";
+import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 
 const style = {
   position: "absolute",
@@ -23,9 +25,9 @@ export default function ConfirmationModalFinanace(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained" color="secondary">
-        Payment Details
-      </Button>
+      <IconButton onClick={handleOpen} variant="contained" color="secondary">
+        <ContactSupportOutlinedIcon color="info" />
+      </IconButton>
       <Modal
         open={open}
         onClose={handleClose}

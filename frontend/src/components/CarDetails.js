@@ -19,7 +19,7 @@ import CarDetailsTab from "./CarDetailsTab";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
 import { useParams } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
-import { Box, padding } from "@mui/system";
+import { Box } from "@mui/system";
 import BasicTable from "./BasicTable";
 import StripeCheckout from "react-stripe-checkout";
 import useStripe from "../hooks/useStripe";
@@ -106,7 +106,7 @@ export default function CarDetails() {
   };
   const paymentBoxStyles = () => {
     return {
-      minHeight: "200px",
+      height: "395px",
       padding: "1em",
       display: "flex",
       flexDirection: "column",
@@ -153,7 +153,15 @@ export default function CarDetails() {
                     </Typography>
                   </Box>
                   <Divider variant="middle" />
-                  <Box sx={{ m: 2 }}>
+                  <Box
+                    sx={{
+                      mt: 2,
+                      mb: 0,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                       {`$${new Intl.NumberFormat().format(
                         calculateMonthly(
@@ -163,9 +171,23 @@ export default function CarDetails() {
                         )
                       )}`}
                     </Typography>
+                    <ConfirmationModalFinanace
+                      term={years}
+                      downPayment={downPayment}
+                      amount={totalPrice / 100 - downPayment}
+                      monthly={calculateMonthly(
+                        totalPrice / 100 - downPayment,
+                        2.99,
+                        years
+                      )}
+                    />
                   </Box>
-                  <Divider variant="middle" />
-                  <Box sx={{ m: 2, display: "flex", justifyContent: "center" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
                     <Box sx={{ minWidth: 120, padding: 2 }}>
                       <FormControl fullWidth={false}>
                         <InputLabel id="term-select">Years</InputLabel>
@@ -205,8 +227,7 @@ export default function CarDetails() {
                       </FormControl>
                     </Box>
                   </Box>
-                  <Divider variant="middle" />
-                  <Box sx={{ m: 2 }}>
+                  <Box sx={{ mt: 0, mb: 2, ml: 2, mr: 2 }}>
                     <BasicTable price={car.price} tax={car.price * 0.05} />
                   </Box>
                   <Divider variant="middle" />
@@ -217,7 +238,11 @@ export default function CarDetails() {
                     name={`${car.year} ${car.model} ${car.trim}`}
                     amount={downPayment * 100}
                   >
-                    <Button variant="contained" color="secondary">
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{ mt: 2 }}
+                    >
                       Pay Deposit
                     </Button>
                   </StripeCheckout>
@@ -228,16 +253,6 @@ export default function CarDetails() {
                       email &&
                       `Payment confirmed! Bill of sale has been sent to ${email}`
                     }
-                  />
-                  <ConfirmationModalFinanace
-                    term={years}
-                    downPayment={downPayment}
-                    amount={totalPrice / 100 - downPayment}
-                    monthly={calculateMonthly(
-                      totalPrice / 100 - downPayment,
-                      2.99,
-                      years
-                    )}
                   />
                 </Paper>
               </Grid>
@@ -275,6 +290,7 @@ export default function CarDetails() {
                       )}
                     </Typography>
                   </Box>
+                  <Divider variant="middle" />
 
                   <StripeCheckout
                     stripeKey={process.env.REACT_APP_STRIPE_SKEY}
@@ -282,7 +298,11 @@ export default function CarDetails() {
                     name={`${car.year} ${car.model} ${car.trim}`}
                     amount={product.price}
                   >
-                    <Button variant="contained" color="secondary">
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{ mt: 2 }}
+                    >
                       Pay Total
                     </Button>
                   </StripeCheckout>
