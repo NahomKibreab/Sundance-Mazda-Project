@@ -20,7 +20,7 @@ module.exports = (db) => {
   // list only the unique car models
   router.get("/cars/models", (req, res) => {
     db.query(
-      `SELECT DISTINCT ON (model) id, year, model, make, trim, price, image_links FROM vehicles;`
+      `SELECT DISTINCT ON (model) id, year, model, make, trim, price, image_links FROM vehicles WHERE avaliable=true;`
     ).then((data) => {
       res.send(data.rows);
     });
