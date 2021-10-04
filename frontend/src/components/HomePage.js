@@ -32,7 +32,6 @@ export default function HomePage() {
             <CardActionArea onClick={() => path.push(`/cars/${carModel.id}`)}>
               <CardHeader
                 title={`${carModel.year} ${carModel.model} ${carModel.trim}`}
-                titleTypographyProps={carModel.trim}
                 subheader={`$${new Intl.NumberFormat().format(
                   carModel.price / 100
                 )}`}
