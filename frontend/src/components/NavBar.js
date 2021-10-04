@@ -16,6 +16,7 @@ import MenuDrawer from "./MenuDrawer";
 export default function NavBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [phoneNumber, setPhoneNumber] = React.useState(null);
   const [menu, setMenu] = React.useState(null);
 
   const hideInMobileMode = useMediaQuery((theme) => theme.breakpoints.up("md"));
@@ -30,12 +31,18 @@ export default function NavBar() {
   const handleAnchorEl = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handlePhoneNumber = (event) => {
+    setPhoneNumber(event.currentTarget);
+  };
   // const handleMenu = (event) => {
   //   setMenu(event.currentTarget);
   // };
 
   const anchorElOnClose = () => {
     setAnchorEl(null);
+  };
+  const phoneNumberOnClose = () => {
+    setPhoneNumber(null);
   };
   const menuOnClose = () => {
     setMenu(null);
@@ -126,7 +133,7 @@ export default function NavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleAnchorEl}
+                onClick={handlePhoneNumber}
                 color="inherit"
               >
                 <PhoneEnabled />
@@ -145,6 +152,31 @@ export default function NavBar() {
                 </IconButton>
               )}
 
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(phoneNumber)}
+                onClose={phoneNumberOnClose}
+              >
+                <MenuItem onClick={phoneNumberOnClose}>
+                  Sales: 1-844-394-3633
+                </MenuItem>
+                <MenuItem onClick={phoneNumberOnClose}>
+                  Service: 1-844-472-8053
+                </MenuItem>
+                <MenuItem onClick={phoneNumberOnClose}>
+                  Parts: 1-780-454-7278
+                </MenuItem>
+              </Menu>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
