@@ -1,21 +1,19 @@
 import "./App.css";
-import { Grid } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import NavBar from "./components/NavBar";
 import VehicleCard from "./components/VehicleCard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CarDetails from "./components/CarDetails";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
-// import StripeCheckout from "react-stripe-checkout";
-// import useStripe from "./hooks/useStripe";
-// import { useState } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import About from "./components/About";
+import { Box } from "@mui/system";
+import SearchIcon from "@mui/icons-material/Search";
 
 function App() {
   const [cars, setCars] = useState();
-  // const { product, setProduct, makePayment } = useStripe();
 
   useEffect(() => {
     const vehicles = async () => {
@@ -28,9 +26,7 @@ function App() {
 
   const removeCar = (id) => {
     const newCars = [...cars];
-    console.log("id", id, "before newCars", newCars);
     newCars.splice(0, 1);
-    console.log("id", id, "after newCars", newCars);
     setCars(newCars);
   };
 
@@ -63,14 +59,7 @@ function App() {
                 spacing={2}
                 justifyContent={"center"}
                 alignItems="space-evenly"
-                // sx={{ paddingTop: "16px" }}
               >
-                {/* <StripeCheckout
-              stripeKey={process.env.REACT_APP_STRIPE_SKEY}
-              token={makePayment}
-              name="Vehicle Purchase"
-              amount={product.price * 100}
-            /> */}
                 <Switch>
                   <Route path="/cars/:carId">
                     <Grid container item justifyContent="center">
@@ -88,6 +77,28 @@ function App() {
                       md={10}
                       sx={{ marginTop: "16px" }}
                     >
+                      <Grid container item xs={12} justifyContent="center">
+                        <Grid item xs={6} sm={3}>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "flex-end",
+                              justifyContent: "center",
+                            }}
+                            component="form"
+                          >
+                            <SearchIcon
+                              sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                            />
+                            <TextField
+                              id="input-search"
+                              label="Search"
+                              variant="standard"
+                              name="search"
+                            />
+                          </Box>
+                        </Grid>
+                      </Grid>
                       {cars && vehicles}
                     </Grid>
                   </Route>
