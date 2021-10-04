@@ -63,7 +63,7 @@ export default function CarDetailsTab(props) {
       <TabPanel value={value} index={0}>
         <Grid container spacing={1}>
           {specs.map((item) => (
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} key={item}>
               <InsetList spec={item} key={item} />
             </Grid>
           ))}
@@ -72,7 +72,7 @@ export default function CarDetailsTab(props) {
       <TabPanel value={value} index={1}>
         <Grid container alignItems="center">
           {features.map((item) => (
-            <Grid item xs={6} sm={4} md={3}>
+            <Grid item xs={6} sm={4} md={3} key={item}>
               <InsetList spec={item} key={item} />
             </Grid>
           ))}
