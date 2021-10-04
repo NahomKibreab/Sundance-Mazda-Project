@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardMedia,
   Divider,
   FormControl,
   Grid,
@@ -17,7 +16,7 @@ import {
 import CarCarousel from "./CarCarousel";
 import CarDetailsTab from "./CarDetailsTab";
 import ConfirmationModalFinanace from "./ConfirmationModalFinance";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import useVehiclesData from "../hooks/useVehiclesData";
 import { Box } from "@mui/system";
 import BasicTable from "./BasicTable";
@@ -32,6 +31,7 @@ import CarSpinCarousel from "./CarSpinCarousel";
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
   let params = useParams();
+  const path = useHistory();
   const car = getCarById(params.carId);
 
   // Setting Term for monthly payments
@@ -89,7 +89,7 @@ export default function CarDetails() {
         console.log("response from sold car route", res);
       });
       setTimeout(() => {
-        window.location = "/cars";
+        path.push("/cars");
       }, 3000);
     }
   }, [status, email]);
