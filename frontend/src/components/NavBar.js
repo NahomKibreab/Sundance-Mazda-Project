@@ -116,20 +116,36 @@ export default function NavBar() {
                 >
                   <Button color="inherit">Home</Button>
                 </Link>
-
+                &#124;
                 <Link
                   to="/cars"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <Button color="inherit">Inventory</Button>
                 </Link>
-
+                &#124;
                 <Link
                   to="/about"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <Button color="inherit">About Us</Button>
                 </Link>
+                &#124;
+                <a
+                  href="https://www.sundancemazda.com/en/news/list/reviews"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  target="_blank"
+                >
+                  <Button color="inherit">Reviews</Button>
+                </a>
+                &#124;
+                <a
+                  href="https://www.sundancemazda.com/en/news?limit=12"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  target="_blank"
+                >
+                  <Button color="inherit">News</Button>
+                </a>
               </>
             )}
           </Box>

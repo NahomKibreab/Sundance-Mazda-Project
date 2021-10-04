@@ -27,7 +27,7 @@ export default function About() {
           <Typography variant="h5">
             Your Mazda Dealer of Choice in Greater Edmonton
           </Typography>
-          <br />
+
           <Grid item xs={12}>
             <Typography variant="h7">
               Welcome to Sundance Mazda, your go-to destination for Mazda
@@ -50,7 +50,7 @@ export default function About() {
           <Typography variant="h5">
             Sundance Mazda: Your Destination for Expert Service
           </Typography>
-          <br />
+
           <Grid item xs={12}>
             <Typography variant="h7">
               Sundance Mazda offers a complete collection of brand new Mazda
