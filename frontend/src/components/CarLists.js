@@ -3,20 +3,44 @@ import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
 import VehicleCard from "./VehicleCard";
 import useVehiclesData from "../hooks/useVehiclesData";
-import { useParams } from "react-router";
+import { useState } from "react";
 
 export default function CarLists() {
   const { cars } = useVehiclesData();
-  const path = useParams();
-  console.log("path", path);
+  const carLists = Object.values(cars);
+  const [searchCars, setSearchCars] = useState();
 
   const vehicles =
-    Object.values &&
-    Object.values(cars).map((car, index) => (
+    carLists &&
+    carLists.map((car, index) => (
       <Grid item key={index}>
         <VehicleCard {...car} index={index} />
       </Grid>
     ));
+
+  const searchResults = (results) => {
+    return results.map((car, index) => (
+      <Grid item key={index}>
+        <VehicleCard {...car} index={index} />
+      </Grid>
+    ));
+  };
+
+  const search = (event) => {
+    const word = event.target.value.toLowerCase();
+    const results = carLists.filter((car) => {
+      const values = Object.values(car).map((value) => {
+        if (typeof value === "string") {
+          return value.toLowerCase();
+        }
+        return value.toString();
+      });
+
+      return values.includes(word);
+    });
+    setSearchCars(results);
+    return results;
+  };
   return (
     <Grid
       container
@@ -36,11 +60,18 @@ export default function CarLists() {
             }}
           >
             <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField id="input-search" label="Search" variant="standard" />
+            <TextField
+              id="input-search"
+              label="Search"
+              variant="standard"
+              onChange={(event) => search(event)}
+            />
           </Box>
         </Grid>
       </Grid>
-      {cars && vehicles}
+      {searchCars && searchCars.length > 0
+        ? searchResults(searchCars)
+        : cars && vehicles}
     </Grid>
   );
 }
