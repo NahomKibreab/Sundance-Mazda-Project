@@ -1,25 +1,15 @@
 import { Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import VehicleCard from "./VehicleCard";
+import useVehiclesData from "../hooks/useVehiclesData";
 
-export default function CarLists(props) {
-  const [cars, setCars] = useState();
-
-  useEffect(() => {
-    const vehicles = async () => {
-      const response = await axios.get("/api/cars");
-
-      setCars(response.data);
-    };
-    vehicles();
-  }, []);
+export default function CarLists() {
+  const { cars } = useVehiclesData();
 
   const vehicles =
-    cars &&
-    cars.map((car, index) => (
+    Object.values &&
+    Object.values(cars).map((car, index) => (
       <Grid item key={index}>
         <VehicleCard {...car} index={index} />
       </Grid>
