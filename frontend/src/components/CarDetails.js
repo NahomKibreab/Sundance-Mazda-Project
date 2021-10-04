@@ -27,6 +27,9 @@ import SnackbarNotification from "./SnackbarNotification";
 import axios from "axios";
 import calculateMonthly from "../Utils/CalculateMonthly";
 import CarSpinCarousel from "./CarSpinCarousel";
+import { Directions } from "@mui/icons-material";
+
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
@@ -130,6 +133,45 @@ export default function CarDetails() {
             image2={car.carousel_links[1]}
             image3={car.carousel_links[2]}
           />
+          <Grid container justifyContent="center" alignItems="center">
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FiberManualRecordIcon fontSize="small" />
+                Stock #: {car.stock_number}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FiberManualRecordIcon fontSize="small" />
+                Exterior Color: {car.ext_color}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FiberManualRecordIcon fontSize="small" />
+                Interior Color: {car.int_color}
+              </Typography>
+            </Grid>
+          </Grid>
+
           <CardContent sx={styles()}>
             <CarCarousel imageList={imageList} />
           </CardContent>
