@@ -5,6 +5,8 @@ import {
   Garage,
   AccountBox,
   Logout,
+  Reviews,
+  ImportContacts,
 } from "@mui/icons-material";
 
 // Base the input argument this function will return an icon
@@ -18,6 +20,10 @@ export default function MenuDrawerIcon(menu) {
       return <Info />;
     case "My Garage":
       return <Garage />;
+    case "Reviews":
+      return <Reviews />;
+    case "News":
+      return <ImportContacts />;
     case "My Profile":
       return <AccountBox />;
     case "Logout":

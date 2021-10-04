@@ -35,18 +35,36 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Invetory", "About Us"].map((text, index) => (
-          <Link
-            to={MenuDrawerLinks(text)}
-            style={{ textDecoration: "none", color: "inherit" }}
-            key={index}
-          >
-            <ListItem button key={IDBIndex}>
-              <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          </Link>
-        ))}
+        {["Home", "Invetory", "About Us", "Reviews", "News"].map(
+          (text, index) =>
+            text !== "Reviews" && text !== "News" ? (
+              <Link
+                to={MenuDrawerLinks(text)}
+                style={{ textDecoration: "none", color: "inherit" }}
+                key={index}
+              >
+                <ListItem button key={IDBIndex}>
+                  <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </Link>
+            ) : (
+              <a
+                href={
+                  text === "Reviews"
+                    ? "https://www.sundancemazda.com/en/news/list/reviews"
+                    : "https://www.sundancemazda.com/en/news?limit=12"
+                }
+                style={{ textDecoration: "none", color: "inherit" }}
+                target="_blank"
+              >
+                <ListItem button key={IDBIndex}>
+                  <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </a>
+            )
+        )}
       </List>
       <Divider />
       <List>
