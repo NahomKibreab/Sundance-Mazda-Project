@@ -143,7 +143,7 @@ export default function CarDetails() {
                 }}
               >
                 <FiberManualRecordIcon fontSize="small" />
-                Stock #: {car.stock_number}
+                Stock Number: {car.stock_number}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4}>

@@ -29,7 +29,7 @@ export default function VehicleCard(props) {
           <Grid container>
             <Grid item sx={{ textAlign: "left", flexGrow: 1 }}>
               <Typography variant="h6" color="text.secondary">
-                {model} {year}
+                {year} {model}
               </Typography>
             </Grid>
             <Grid item>

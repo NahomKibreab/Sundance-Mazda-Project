@@ -77,7 +77,7 @@ export default function HomePage() {
 
       <Grid container justifyContent="center" spacing={2} mt={2}>
         <Grid item xs={12}>
-          <Typography variant="h5">Special Offers</Typography>
+          <Typography variant="h5">Manager's Specials</Typography>
         </Grid>
         {models}
       </Grid>
