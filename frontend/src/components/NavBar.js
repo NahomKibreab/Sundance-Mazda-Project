@@ -135,6 +135,7 @@ export default function NavBar() {
                   href="https://www.sundancemazda.com/en/news/list/reviews"
                   style={{ textDecoration: "none", color: "inherit" }}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <Button color="inherit">Reviews</Button>
                 </a>
@@ -143,6 +144,7 @@ export default function NavBar() {
                   href="https://www.sundancemazda.com/en/news?limit=12"
                   style={{ textDecoration: "none", color: "inherit" }}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <Button color="inherit">News</Button>
                 </a>

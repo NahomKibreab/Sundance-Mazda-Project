@@ -25,9 +25,9 @@ export default function HomePage() {
 
   const models =
     carModels &&
-    carModels.map((carModel) => {
+    carModels.map((carModel, index) => {
       return (
-        <Grid item xs={7} lg={3}>
+        <Grid item xs={7} lg={3} key={index}>
           <Card raised>
             <CardActionArea onClick={() => path.push(`/cars/${carModel.id}`)}>
               <CardHeader

@@ -57,6 +57,8 @@ export default function MenuDrawer() {
                 }
                 style={{ textDecoration: "none", color: "inherit" }}
                 target="_blank"
+                rel="noreferrer"
+                key={index}
               >
                 <ListItem button key={IDBIndex}>
                   <ListItemIcon>{MenuDrawerIcon(text)}</ListItemIcon>
