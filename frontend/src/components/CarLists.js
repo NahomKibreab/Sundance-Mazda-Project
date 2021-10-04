@@ -3,9 +3,12 @@ import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
 import VehicleCard from "./VehicleCard";
 import useVehiclesData from "../hooks/useVehiclesData";
+import { useParams } from "react-router";
 
 export default function CarLists() {
   const { cars } = useVehiclesData();
+  const path = useParams();
+  console.log("path", path);
 
   const vehicles =
     Object.values &&
@@ -31,15 +34,9 @@ export default function CarLists() {
               alignItems: "flex-end",
               justifyContent: "center",
             }}
-            component="form"
           >
             <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField
-              id="input-search"
-              label="Search"
-              variant="standard"
-              name="search"
-            />
+            <TextField id="input-search" label="Search" variant="standard" />
           </Box>
         </Grid>
       </Grid>
