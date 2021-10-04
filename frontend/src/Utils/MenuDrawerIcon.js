@@ -34,7 +34,7 @@ export function MenuDrawerLinks(menu) {
     case "Invetory":
       return "/cars";
     case "About Us":
-      return "/";
+      return "/about";
     case "My Garage":
       return "/";
     case "My Profile":

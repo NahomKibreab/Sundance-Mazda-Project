@@ -97,7 +97,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/about"
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       About Us

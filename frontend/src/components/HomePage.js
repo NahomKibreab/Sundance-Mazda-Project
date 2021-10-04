@@ -49,7 +49,7 @@ export default function HomePage() {
       );
     });
   const location = {
-    address: "17990 102 Ave NW, Edmonton, AB T5S 1M9",
+    address: "Sundance Mazda, 17990 102 Ave NW, Edmonton, AB",
     lat: 53.544013658365934,
     lng: -113.63180428465739,
   };

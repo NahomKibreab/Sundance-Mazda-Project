@@ -123,6 +123,13 @@ export default function NavBar() {
                 >
                   <Button color="inherit">Inventory</Button>
                 </Link>
+
+                <Link
+                  to="/about"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <Button color="inherit">About Us</Button>
+                </Link>
               </>
             )}
           </Box>

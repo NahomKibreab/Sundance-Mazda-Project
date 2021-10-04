@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 // import { useState } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import About from "./components/About";
 
 function App() {
   const [cars, setCars] = useState();
@@ -89,6 +90,9 @@ function App() {
                     >
                       {cars && vehicles}
                     </Grid>
+                  </Route>
+                  <Route path="/about">
+                    <About />
                   </Route>
 
                   <Route path="/">
