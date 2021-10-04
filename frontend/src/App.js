@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import About from "./components/About";
 import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
+import CarLists from "./components/CarLists";
 
 function App() {
   const [cars, setCars] = useState();
@@ -69,7 +70,7 @@ function App() {
                     </Grid>
                   </Route>
                   <Route path="/cars">
-                    <Grid
+                    {/* <Grid
                       container
                       item
                       justifyContent="center"
@@ -100,7 +101,8 @@ function App() {
                         </Grid>
                       </Grid>
                       {cars && vehicles}
-                    </Grid>
+                    </Grid> */}
+                    <CarLists />
                   </Route>
                   <Route path="/about">
                     <About />
