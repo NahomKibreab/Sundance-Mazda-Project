@@ -11,7 +11,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 300,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -36,7 +36,10 @@ export default function ConfirmationModalFinanace(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Total amount financed:
+            Finance Summary
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Total amount:
             {`$${new Intl.NumberFormat().format(props.amount)}`}
             <br />
             Total down payment:{" "}
@@ -47,9 +50,7 @@ export default function ConfirmationModalFinanace(props) {
             Monthly payment :{" "}
             {`$${new Intl.NumberFormat().format(props.monthly)}`}
             <br />
-            Interest rate: 2.99%
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Interest rate: 2.99% <br />
             Estimated amounts above.
           </Typography>
         </Box>
