@@ -5,7 +5,6 @@ import {
   CardMedia,
   Grid,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -27,7 +26,7 @@ export default function HomePage() {
     carModels &&
     carModels.map((carModel, index) => {
       return (
-        <Grid item xs={7} lg={3} key={index}>
+        <Grid item xs={11} sm={7} lg={3} key={index}>
           <Card raised>
             <CardActionArea onClick={() => path.push(`/cars/${carModel.id}`)}>
               <CardHeader
@@ -56,7 +55,6 @@ export default function HomePage() {
     <>
       <Grid
         container
-        mt={2}
         justifyContent="center"
         sx={{ backgroundColor: "#bec2cb" }}
       >
