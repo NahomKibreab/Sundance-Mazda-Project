@@ -11,13 +11,19 @@ export default function About() {
   };
   return (
     <Grid container justifyContent="center">
-      <Grid item xs={12} sx={{ backgroundColor: "#bec2cb" }} p={2}>
-        <Typography variant="h3" px={0.5} fontWeight="light" color="#fff">
-          Welcome to Sundance Mazda
-        </Typography>
-        <Typography variant="h5" px={1}>
-          Your Mazda Dealer of Choice in Greater Edmonton
-        </Typography>
+      <Grid
+        container
+        justifyContent="center"
+        sx={{ backgroundColor: "#bec2cb" }}
+      >
+        <Grid item py={1}>
+          <Typography variant="h3" fontWeight="light" color="#fff">
+            Welcome to Sundance Mazda
+          </Typography>
+          <Typography variant="h5">
+            Your Mazda Dealer of Choice in Greater Edmonton
+          </Typography>
+        </Grid>
       </Grid>
 
       <Grid item xs={12} pt={2} px={4}>

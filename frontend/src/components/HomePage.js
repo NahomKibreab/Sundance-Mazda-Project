@@ -56,13 +56,13 @@ export default function HomePage() {
       <Grid
         container
         justifyContent="center"
-        sx={{ backgroundColor: "rgb(57, 62, 64)" }}
+        sx={{ backgroundColor: "#bec2cb" }}
       >
         <Grid item paddingBottom={2} paddingTop={2}>
           <Typography variant="h3" fontWeight="light" color="white">
             Sundance Mazda
           </Typography>
-          <Typography variant="h7" color="white">
+          <Typography variant="h7">
             Edmonton's Premier Dealer, serving Edmonton since 1985.
           </Typography>
         </Grid>

@@ -10,10 +10,11 @@ export default function Videos() {
         justifyContent="center"
         sx={{ backgroundColor: "#bec2cb" }}
       >
-        <Grid item>
-          <Typography variant="h3" p={4} fontWeight="light">
+        <Grid item py={1}>
+          <Typography variant="h3" fontWeight="light" color="white">
             Helpful Videos
           </Typography>
+          <Typography variant="h5">Featuring Our Staff</Typography>
         </Grid>
       </Grid>
 
