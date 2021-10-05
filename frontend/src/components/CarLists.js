@@ -11,13 +11,11 @@ export default function CarLists() {
   const carLists = Object.values(cars);
   const [searchCars, setSearchCars] = useState();
 
-  const vehicles =
-    carLists &&
-    carLists.map((car, index) => (
-      <Grid item key={index}>
-        <VehicleCard {...car} index={index} />
-      </Grid>
-    ));
+  const vehicles = carLists.map((car, index) => (
+    <Grid item key={index}>
+      <VehicleCard {...car} index={index} />
+    </Grid>
+  ));
 
   const searchResults = (results) => {
     return results.map((car, index) => (
@@ -53,7 +51,7 @@ export default function CarLists() {
         sx={{ marginTop: "16px" }}
       >
         <Grid container item xs={12} justifyContent="center">
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4}>
             <Box
               sx={{
                 display: "flex",
