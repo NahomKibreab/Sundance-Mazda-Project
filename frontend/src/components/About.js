@@ -53,12 +53,6 @@ export default function About() {
           Sundance Mazda and the services and vehicles we offer, contact us
           today at 1-844-394-3671 or online using our contact form.
         </Typography>
-        <Grid item sx={{ display: "flex", justifyContent: "center" }} mt={2}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=juEqvlETN30"
-            width={mobileMode ? "100%" : "50%"}
-          />
-        </Grid>
       </Grid>
       <Grid item xs={12}>
         <Map location={location} zoomLevel={17} />
