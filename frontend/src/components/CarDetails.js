@@ -295,6 +295,15 @@ export default function CarDetails() {
                     <ConfirmationModal
                       open={confirmation}
                       setOpen={setConfirmation}
+                      car={car && car}
+                      term={years}
+                      downPayment={downPayment}
+                      amount={totalPrice / 100 - downPayment}
+                      monthly={calculateMonthly(
+                        totalPrice / 100 - downPayment,
+                        2.99,
+                        years
+                      )}
                       paymentMethod={paymentMethod}
                     />
                   )}
@@ -363,6 +372,7 @@ export default function CarDetails() {
                     <ConfirmationModal
                       open={confirmation}
                       setOpen={setConfirmation}
+                      car={car && car}
                       paymentMethod={paymentMethod}
                     />
                   )}

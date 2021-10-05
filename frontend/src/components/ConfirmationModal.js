@@ -3,25 +3,42 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Input } from "@mui/material";
+import { Divider, Input, useMediaQuery } from "@mui/material";
 import { useHistory } from "react-router";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import {
+  SellerDetails,
+  BuyersDetails,
+  VehicleDetails,
+  PriceDetails,
+  PaymentDetails,
+} from "./ConfirmationTable";
 
 export default function ConfirmationModal(props) {
   // const [open, setOpen] = React.useState(false);
-  const { open, setOpen, paymentMethod } = props;
-  const ariaLabel = { "aria-label": "description" };
+  const mobileMode = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: mobileMode ? 300 : 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    overflow: "scroll",
+    height: "70vh",
+  };
+  const {
+    open,
+    setOpen,
+    paymentMethod,
+    car,
+    term,
+    downPayment,
+    amount,
+    monthly,
+  } = props;
   const path = useHistory();
 
   const redirectToHome = () => {
@@ -29,42 +46,71 @@ export default function ConfirmationModal(props) {
     path.push("/");
   };
 
-  return (
-    <div>
-      <Modal
-        open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Input defaultValue="Hello world" inputProps={ariaLabel} />
-          <Input placeholder="Placeholder" inputProps={ariaLabel} />
-          <Input disabled defaultValue="Disabled" inputProps={ariaLabel} />
-          <Input defaultValue="Error" error inputProps={ariaLabel} />
-          <Input defaultValue="Hello world" inputProps={ariaLabel} />
-          <Input placeholder="Placeholder" inputProps={ariaLabel} />
-          <Input disabled defaultValue="Disabled" inputProps={ariaLabel} />
-          <Input defaultValue="Error" error inputProps={ariaLabel} />
-          <Input defaultValue="Hello world" inputProps={ariaLabel} />
-          <Input placeholder="Placeholder" inputProps={ariaLabel} />
-          <Input disabled defaultValue="Disabled" inputProps={ariaLabel} />
-          <Input defaultValue="Error" error inputProps={ariaLabel} />
-
-          <Typography id="modal-modal-title" variant="h1" component="h2">
-            {paymentMethod}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={redirectToHome}
-          >
-            DONE
-          </Button>
-        </Box>
-      </Modal>
-    </div>
-  );
+  if (car) {
+    return (
+      <div>
+        <Modal
+          open={open}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h4" component="h2">
+              Purchase Details
+            </Typography>
+            <Divider variant="middle" color="black" />
+            <Box id="modal-modal-description">
+              <>
+                <Typography
+                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                >
+                  Seller's Details
+                </Typography>
+                <SellerDetails />
+                <Divider variant="middle" color="black" />
+                <Typography
+                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                >
+                  Buyer's Details
+                </Typography>
+                <BuyersDetails />
+                <Divider variant="middle" color="black" />
+                <Typography
+                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                >
+                  Vehicle's Details
+                </Typography>
+                <VehicleDetails car={car} />
+                <Divider variant="middle" color="black" />
+                <Typography
+                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                >
+                  Price Details
+                </Typography>
+                <PriceDetails car={car} />
+                {paymentMethod === "finance" && (
+                  <>
+                    <Divider variant="middle" color="black" />
+                    <Typography
+                      sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                    >
+                      Payment Details
+                    </Typography>
+                    <PaymentDetails term downPayment amount monthly />
+                  </>
+                )}
+              </>
+            </Box>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={redirectToHome}
+            >
+              DONE
+            </Button>
+          </Box>
+        </Modal>
+      </div>
+    );
+  }
 }
