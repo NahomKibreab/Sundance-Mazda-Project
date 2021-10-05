@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import About from "./components/About";
 import CarLists from "./components/CarLists";
+import Videos from "./components/Videos";
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
                   </Route>
                   <Route path="/about">
                     <About />
+                  </Route>
+                  <Route path="/videos">
+                    <Videos />
                   </Route>
 
                   <Route path="/">

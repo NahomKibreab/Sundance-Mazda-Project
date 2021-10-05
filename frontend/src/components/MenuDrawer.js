@@ -35,7 +35,7 @@ export default function MenuDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Invetory", "About Us", "Reviews", "News"].map(
+        {["Home", "Invetory", "About Us", "Videos", "Reviews", "News"].map(
           (text, index) =>
             text !== "Reviews" && text !== "News" ? (
               <Link
