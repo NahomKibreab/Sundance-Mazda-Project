@@ -62,28 +62,48 @@ export default function ConfirmationModal(props) {
             <Box id="modal-modal-description">
               <>
                 <Typography
-                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    textDecoration: "underline",
+                  }}
                 >
                   Seller's Details
                 </Typography>
                 <SellerDetails />
                 <Divider variant="middle" color="black" />
                 <Typography
-                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    textDecoration: "underline",
+                  }}
                 >
                   Buyer's Details
                 </Typography>
                 <BuyersDetails />
                 <Divider variant="middle" color="black" />
                 <Typography
-                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    textDecoration: "underline",
+                  }}
                 >
                   Vehicle's Details
                 </Typography>
                 <VehicleDetails car={car} />
                 <Divider variant="middle" color="black" />
                 <Typography
-                  sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                  sx={{
+                    mt: 2,
+                    display: "flex",
+                    justifyContent: "center",
+                    textDecoration: "underline",
+                  }}
                 >
                   Price Details
                 </Typography>
@@ -92,7 +112,12 @@ export default function ConfirmationModal(props) {
                   <>
                     <Divider variant="middle" color="black" />
                     <Typography
-                      sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                      sx={{
+                        mt: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        textDecoration: "underline",
+                      }}
                     >
                       Payment Details
                     </Typography>
@@ -106,13 +131,25 @@ export default function ConfirmationModal(props) {
                 )}
               </>
             </Box>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={redirectToHome}
+            <Box
+              sx={{ display: "flex", justifyContent: "space-evenly" }}
+              mt={2}
             >
-              DONE
-            </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={redirectToHome}
+              >
+                Print Docs
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={redirectToHome}
+              >
+                DONE
+              </Button>
+            </Box>
           </Box>
         </Modal>
       </div>
