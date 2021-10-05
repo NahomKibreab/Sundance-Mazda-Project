@@ -21,7 +21,6 @@ const style = {
 export default function ConfirmationModal(props) {
   // const [open, setOpen] = React.useState(false);
   const { open, setOpen, paymentMethod } = props;
-  const handleClose = () => setOpen(false);
   const ariaLabel = { "aria-label": "description" };
   const path = useHistory();
 
@@ -34,7 +33,6 @@ export default function ConfirmationModal(props) {
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -58,7 +56,13 @@ export default function ConfirmationModal(props) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-          <Button onClick={redirectToHome}>DONE</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={redirectToHome}
+          >
+            DONE
+          </Button>
         </Box>
       </Modal>
     </div>
