@@ -27,9 +27,9 @@ import SnackbarNotification from "./SnackbarNotification";
 import axios from "axios";
 import calculateMonthly from "../Utils/CalculateMonthly";
 import CarSpinCarousel from "./CarSpinCarousel";
-import { Directions } from "@mui/icons-material";
 
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import ConfirmationModal from "./ConfirmationModal";
 
 export default function CarDetails() {
   const { getCarById } = useVehiclesData();
@@ -38,20 +38,24 @@ export default function CarDetails() {
   const car = getCarById(params.carId);
 
   // Setting Term for monthly payments
-
   const [years, setYears] = useState(7);
+
+  // Track the payment method
+  const [paymentMethod, setPaymentMethod] = useState();
 
   const handleChange = (event) => {
     setYears(event.target.value);
   };
 
   // Setting Down payment
-
   const [downPayment, setDownPayment] = useState(2000);
 
   const handleChangeDown = (event) => {
     setDownPayment(event.target.value);
   };
+
+  // Once payment completed confirmation modal pops up
+  const [confirmation, setConfirmation] = useState(false);
 
   // Success Notification
   const [open, setOpen] = useState(false);
@@ -88,12 +92,10 @@ export default function CarDetails() {
   useEffect(() => {
     if (status) {
       handleClick();
+      setConfirmation(true);
       axios.put(`/api/cars/${car.id}`).then((res) => {
         console.log("response from sold car route", res);
       });
-      setTimeout(() => {
-        path.push("/cars");
-      }, 3000);
     }
   }, [status, email]);
 
@@ -284,10 +286,18 @@ export default function CarDetails() {
                       variant="contained"
                       color="secondary"
                       sx={{ mt: 2 }}
+                      onClick={() => setPaymentMethod("finance")}
                     >
                       Pay Deposit
                     </Button>
                   </StripeCheckout>
+                  {paymentMethod === "finance" && (
+                    <ConfirmationModal
+                      open={confirmation}
+                      setOpen={setConfirmation}
+                      paymentMethod={paymentMethod}
+                    />
+                  )}
                   <SnackbarNotification
                     open={open}
                     handleClose={handleClose}
@@ -344,10 +354,18 @@ export default function CarDetails() {
                       variant="contained"
                       color="secondary"
                       sx={{ mt: 2 }}
+                      onClick={() => setPaymentMethod("cash")}
                     >
                       Pay Total
                     </Button>
                   </StripeCheckout>
+                  {paymentMethod === "cash" && (
+                    <ConfirmationModal
+                      open={confirmation}
+                      setOpen={setConfirmation}
+                      paymentMethod={paymentMethod}
+                    />
+                  )}
                   <SnackbarNotification
                     open={open}
                     handleClose={handleClose}
