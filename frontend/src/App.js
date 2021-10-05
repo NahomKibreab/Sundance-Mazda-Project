@@ -28,7 +28,6 @@ function App() {
                 item
                 xs={12}
                 container
-                spacing={2}
                 justifyContent={"center"}
                 alignItems="space-evenly"
               >
