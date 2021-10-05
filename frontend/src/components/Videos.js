@@ -7,7 +7,6 @@ export default function Videos() {
     <>
       <Grid
         container
-        mt={2}
         justifyContent="center"
         sx={{ backgroundColor: "#bec2cb" }}
       >
