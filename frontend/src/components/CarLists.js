@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
 import VehicleCard from "./VehicleCard";
@@ -42,50 +42,37 @@ export default function CarLists() {
   };
   if (cars || carLists) {
     return (
-      <>
-        {/* <Grid
-          container
-          justifyContent="center"
-          sx={{ backgroundColor: "rgb(57, 62, 64)" }}
-        >
-          <Grid item>
-            <Typography variant="h3" p={4} fontWeight="light" color="white">
-              Browse our Invetory
-            </Typography>
+      <Grid
+        container
+        item
+        justifyContent="center"
+        spacing={2}
+        md={10}
+        sx={{ marginTop: "16px" }}
+      >
+        <Grid container item xs={12} justifyContent="center">
+          <Grid item xs={6} sm={4}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "center",
+              }}
+            >
+              <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+              <TextField
+                id="input-search"
+                label="Search"
+                variant="standard"
+                onChange={(event) => search(event)}
+              />
+            </Box>
           </Grid>
-        </Grid> */}
-        <Grid
-          container
-          item
-          justifyContent="center"
-          spacing={2}
-          md={10}
-          sx={{ marginTop: "16px" }}
-        >
-          <Grid container item xs={12} justifyContent="center">
-            <Grid item xs={6} sm={4}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "flex-end",
-                  justifyContent: "center",
-                }}
-              >
-                <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-                <TextField
-                  id="input-search"
-                  label="Search"
-                  variant="standard"
-                  onChange={(event) => search(event)}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-          {searchCars && searchCars.length > 0
-            ? searchResults(searchCars)
-            : cars && vehicles}
         </Grid>
-      </>
+        {searchCars && searchCars.length > 0
+          ? searchResults(searchCars)
+          : vehicles}
+      </Grid>
     );
   } else {
     return <Status />;
