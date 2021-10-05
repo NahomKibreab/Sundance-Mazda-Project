@@ -8,6 +8,7 @@ import {
   Reviews,
   ImportContacts,
 } from "@mui/icons-material";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 // Base the input argument this function will return an icon
 export default function MenuDrawerIcon(menu) {
@@ -22,6 +23,8 @@ export default function MenuDrawerIcon(menu) {
       return <Garage />;
     case "Reviews":
       return <Reviews />;
+    case "Videos":
+      return <YouTubeIcon />;
     case "News":
       return <ImportContacts />;
     case "My Profile":
@@ -41,6 +44,8 @@ export function MenuDrawerLinks(menu) {
       return "/cars";
     case "About Us":
       return "/about";
+    case "Videos":
+      return "/videos";
     case "My Garage":
       return "/";
     case "My Profile":

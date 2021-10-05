@@ -131,6 +131,13 @@ export default function NavBar() {
                   <Button color="inherit">About Us</Button>
                 </Link>
                 &#124;
+                <Link
+                  to="/videos"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <Button color="inherit">Videos</Button>
+                </Link>
+                &#124;
                 <a
                   href="https://www.sundancemazda.com/en/news/list/reviews"
                   style={{ textDecoration: "none", color: "inherit" }}

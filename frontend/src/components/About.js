@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import Map from "./HomeMap";
+import ReactPlayer from "react-player";
 
 export default function About() {
   const location = {
@@ -68,6 +69,7 @@ export default function About() {
               we offer, contact us today at 1-844-394-3671 or online using our
               contact form.
             </Typography>
+            <ReactPlayer url="https://www.youtube.com/watch?v=juEqvlETN30" />
           </Grid>
         </Grid>
       </Grid>
