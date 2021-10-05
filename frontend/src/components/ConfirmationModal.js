@@ -96,7 +96,12 @@ export default function ConfirmationModal(props) {
                     >
                       Payment Details
                     </Typography>
-                    <PaymentDetails term downPayment amount monthly />
+                    <PaymentDetails
+                      term={term}
+                      downPayment={downPayment}
+                      amount={amount}
+                      monthly={monthly}
+                    />
                   </>
                 )}
               </>
