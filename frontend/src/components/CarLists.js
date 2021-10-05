@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import VehicleCard from "./VehicleCard";
 import useVehiclesData from "../hooks/useVehiclesData";
 import { useState } from "react";
+import Status from "./Status";
 
 export default function CarLists() {
   const { cars } = useVehiclesData();
@@ -41,37 +42,41 @@ export default function CarLists() {
     setSearchCars(results);
     return results;
   };
-  return (
-    <Grid
-      container
-      item
-      justifyContent="center"
-      spacing={2}
-      md={10}
-      sx={{ marginTop: "16px" }}
-    >
-      <Grid container item xs={12} justifyContent="center">
-        <Grid item xs={6} sm={3}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "center",
-            }}
-          >
-            <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField
-              id="input-search"
-              label="Search"
-              variant="standard"
-              onChange={(event) => search(event)}
-            />
-          </Box>
+  if (cars || carLists) {
+    return (
+      <Grid
+        container
+        item
+        justifyContent="center"
+        spacing={2}
+        md={10}
+        sx={{ marginTop: "16px" }}
+      >
+        <Grid container item xs={12} justifyContent="center">
+          <Grid item xs={6} sm={3}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "center",
+              }}
+            >
+              <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+              <TextField
+                id="input-search"
+                label="Search"
+                variant="standard"
+                onChange={(event) => search(event)}
+              />
+            </Box>
+          </Grid>
         </Grid>
+        {searchCars && searchCars.length > 0
+          ? searchResults(searchCars)
+          : cars && vehicles}
       </Grid>
-      {searchCars && searchCars.length > 0
-        ? searchResults(searchCars)
-        : cars && vehicles}
-    </Grid>
-  );
+    );
+  } else {
+    return <Status />;
+  }
 }
