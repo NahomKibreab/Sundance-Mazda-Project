@@ -15,7 +15,7 @@ export default function MenuDrawerIcon(menu) {
   switch (menu) {
     case "Home":
       return <Home />;
-    case "Invetory":
+    case "Inventory":
       return <DirectionsCar />;
     case "About Us":
       return <Info />;
@@ -40,7 +40,7 @@ export function MenuDrawerLinks(menu) {
   switch (menu) {
     case "Home":
       return "/";
-    case "Invetory":
+    case "Inventory":
       return "/cars";
     case "About Us":
       return "/about";
