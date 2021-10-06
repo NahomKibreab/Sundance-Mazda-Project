@@ -13,6 +13,12 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
+// connecting server to build folder
+if (process.env.NODE_ENV === "production") {
+  //server statuc content
+  app.use(express.static("frontend/build"));
+}
+
 // api
 const vehicles = require("./routes/vehicles");
 app.use("/api", vehicles(db));
