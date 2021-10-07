@@ -4,8 +4,8 @@
   "description": "Lighthouse Labs Final Project developed for the car dealership Sundance-Mazda to redesign their website.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "heroku-postbuild":"cd frontend && npm install && npm run build",
     "reset": "psql -U mazda -d mazda < ./db/schema/create.sql && psql -U mazda -d mazda < ./db/seeds/vehicles.sql"
   },
   "repository": {
