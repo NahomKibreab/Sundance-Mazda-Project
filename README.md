@@ -208,20 +208,43 @@ Please note:
 
 ## Dependencies
 
-- Node 10.x or above
-- NPM 5.x or above
-- PG 6.x
-- Body-parser 1.19.0 or above
-- Chalk 2.4.2 or above
-- Cookie-session 1.4.0 or above
-- Dotenv 2.0.0 or above
-- Ejs 2.6.2 or above
-- Express 4.17.1 or above
-- Morgan 1.9.1 or above
-- Node-sass-middleware 0.11.0 or above
-- PG-native" 3.0.0 or above
-- Twilio 3.67.0 or above
+### Front End
+
+- @emotion/react: 11.4.1
+- @emotion/styled: 11.3.0
+- @mui/icons-material: 5.0.1
+- @mui/material: 5.0.1
+- @testing-library/jest-dom: 5.14.1
+- @testing-library/react: 11.2.7
+- @testing-library/user-event: 12.8.3
+- axios: 0.21.4
+- google-map-react: 2.1.10
+- react: 17.0.2
+- react-dom: 17.0.2
+- react-player: 2.9.0
+- react-responsive-carousel: 3.2.21
+- react-router-dom: 5.3.0
+- react-scripts: 4.0.3
+- react-stripe-checkout: 2.6.3
+- web-vitals: 1.1.2
+
+### Back End
+
+- cors: 2.8.5
+- dotenv: 10.0.0
+- express: 4.17.1
+- pg: 8.7.1
+- stripe: 8.176.0
+- uuid: 8.3.2
 
 ## Dev Dependencies
 
-- nodemon 1.19.1 or above
+### Front End
+
+- @iconify/icons-mdi: 1.1.31
+- @iconify/react: 3.0.1
+
+### Back End
+
+- morgan: 1.10.0
+- nodemon: 2.0.13
