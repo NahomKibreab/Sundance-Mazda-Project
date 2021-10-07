@@ -8,6 +8,7 @@ const db = require("./db");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 const stripe = require("stripe")(process.env.STRIPE_SKEY);
+const path = require("path");
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -61,6 +62,10 @@ app.post("/payment", (req, res) => {
     })
     .then((result) => res.status(200).json(result))
     .catch((err) => console.log(err));
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
 });
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
